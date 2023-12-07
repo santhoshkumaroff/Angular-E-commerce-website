@@ -1,73 +1,173 @@
-<body>
-<header>
-    <div class="header" style="display: flex;">
-
+<div class="main-container">
+    <div class="image-nav" >
         <div class="site-logo">
-            <img src="../../assets/logo.jpg" alt="no image">
+            <img src="../../assets/logo.jpg"  alt="no image">
         </div>
         <div class="navigation_menu">
             <ul>
                 <li>
-                    <a routerLink="home" class="home">
+                    <a routerLink="" class="home">
                         Home
                     </a>
                 </li>
                 <li>
-                    <a routerLink="home" class="about_us">
+                    <a routerLink="" class="about_us">
                         About us
                     </a>
                 </li>
                 <li>
-                    <a routerLink="home" class="products">
-                        Products
+                    <a routerLink="masala" class="products">
+                        Masalas
                     </a>
                 </li>
                 <li>
-                    <a routerLink="home" class="contact_us">
+                    <a routerLink="" class="contact_us">
                         Contact us
                     </a>
                 </li>
             </ul>
 
-        </div>
-    
-    </div>
-</header>
 
-<div class="main-content">
-    <div class="container">
-        <img src="../../assets/chilly.jpg" alt="Avatar" class="image" style="width:100%">
-        <div class="middle">
-          <div class="text">Spices items</div>
         </div>
-      </div>
+
+    </div>
+    <div class="middle">
+  <!-- <div class="image">
+    <img src="../../assets/items.png" alt="">
+  </div> -->
+        <div class="slogan">
+            <div class="text col-12 col-md-12">
+                "Spice up your life where flavor meets adventure!"
+            </div>
+            <div class="button" routerLink="masala">
+                <button class="explore" routerLink="../masala">Our products<span class="icon-right" ></span>
+                    <span class="icon-right after" ></span></button>
+            </div> 
+        </div>
+    </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarColor03" [ngbCollapse]="isCollapsed">
 
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
+
+
+<!-- <div class="global-service container-fluid mt-5">
+    <h3 class="card-title display-8 text-black">Direct Powders</h3>
+    <div class="row container-fluid mt-3">
+        <div class="card c">
+            <img src="../../assets/direct-powders.png" class="img-fluid" alt="Landscape Image" width="100%" alt="...">
+            <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+            </div>
+          
+        </div>
+
     </div>
-  </nav>
-</body>
+    
+      
+</div> -->
+<!-- <div class="container-fluid p-0 mt-5">
+    <h3 class="text-black d-flex justify-content-center">Direct Powders</h3>
+<div class="container-fluid p-0 mt-5">
+    <div class="overlay-container">
+      <img src="../../assets/direct-powders.png" alt="Landscape Image" class="img-fluid">
+      <div class="overlay"></div>
+    </div>
+  </div>
+</div> -->
+<div class="best-seller container-fluid p-0 mt-5 p-3 d-flex justify-content-space-between">
+    <div class="d-flex container-fluid align-items-center  ">
+        <div class="text ">Best Seller
+            <br>
+            <div style="font-size: x-large;">
+                Ignite Your Culinary Creativity with Devis Masala! Elevate every dish with our top-selling <span class="highlight">{{ dynamicContent }}</span>.  
+                Unleash the magic of our spice powders with easy recipes on our website. Transform ordinary meals into extraordinary experiences—shop now for the finest flavors! 
+            </div>
+        </div>
+       
+
+    </div>
+    <div class="slider-dots" >
+        <div class="slider mt-5 " *ngIf="firstImagePath.length > 0 ">
+            <img [@fadeInOut]="currentImageIndex" [src]="firstImagePath[currentImageIndex]" alt="best-seller" class="slider-image">
+          </div>
+          <div class="dots">
+            <span *ngFor="let image of firstImagePath; let i = index" (click)="setCurrentImage(i)" [class.active]="i === currentImageIndex"></span>
+          </div>
+    </div>
+      
+    
+</div>
+    <!-- <br>
+      <br>
+      <button class="back" (click)="changeImage(-1)">Back</button>
+      <button class="next" (click)="changeImage(1)">Next</button> -->
+<!-- s -->
+<!-- <section class="about-section">
+    <div class="container" style="width: 100%;">
+        <div class="row">                
+                       <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                <div class="inner-column wow fadeInLeft">
+                    <div class="slider-dots" >
+                        <div class="slider mt-5 " *ngIf="firstImagePath.length > 0 ">
+                            <img [@fadeInOut]="currentImageIndex" [src]="firstImagePath[currentImageIndex]" alt="best-seller" class="slider-image">
+                          </div>
+                          <div class="dots">
+                            <span *ngFor="let image of firstImagePath; let i = index" (click)="setCurrentImage(i)" [class.active]="i === currentImageIndex"></span>
+                          </div>
+                    </div>
+                 
+                </div>
+            </div>
+
+            <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
+                <div class="inner-column">
+                    <div class="sec-title">
+                        <h2>Our best selling products</h2>
+                    </div>
+                    <div class="text">I am Rahul Yaduvanshi works at Css3 Transition since last 3 years. We are here to provide touch notch solution for your website or web application that helps you to make your website look attractive & efficient in handling by creating usefull plugins thats you need.</div>
+                  <div class="text">
+                    We are here to serve you next level tutorial that currently in trend to match you with your expertise. Css3 transition is a learning website. where you can find many good quality content related to web development and tutorials about plugins. here we are using html, html5, css, css3, jquery & javascript along with inspirational UI design layout by professionals by using Photoshop and adobe allustrator.
+                  </div>
+                  
+                </div>
+            </div>
+          
+        </div>
+    </div>
+</section> -->
+<!-- e -->
+
+<div class="global-service mt-5 container-fluid">
+    <h2>Our Global Services</h2>
+    <div class="row gap-5 container-fluid mt-3 justify-content-center countries">
+        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+            <img src="../../assets/malaysia.png" class="card-img" alt="...">
+          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+            <h3 class="card-title display-8">Malaysia</h3>
+          </div>
+        </div>
+        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+            <img src="../../assets/dubai.png" class="card-img" alt="...">
+          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+            <h3 class="card-title display-8">Dubai</h3>
+          </div>
+        </div>
+        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+            <img src="../../assets/australia.svg" class="card-img" alt="...">
+          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+            <h3 class="card-title display-8">Australia</h3>
+          </div>
+        </div>
+        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+            <img src="../../assets/singapore.png" class="card-img" alt="...">
+          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+            <h3 class="card-title display-8">Singapore</h3>
+          </div>
+        </div>
+        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+            <img src="../../assets/sri lanka.svg" class="card-img" alt="...">
+          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+            <h3 class="card-title display-8">Sri Lanka</h3>
+          </div>
+        </div>
+
+    </div>
+</div>

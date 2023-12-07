@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "Devis_Masala",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

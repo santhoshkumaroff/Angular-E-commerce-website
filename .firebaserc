@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ecommerce12052023": {
+      "hosting": {
+        "Devis_Masala": [
+          "devismasala"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ecommerce12052023"
+  }
+}
