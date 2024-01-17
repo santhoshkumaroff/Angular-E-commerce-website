@@ -29,11 +29,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 How to push code to `Github`
 
-Check Status `git status`.<br>
-Add Changes `git add .` this will use to stage all your commits.<br>
-Commit `git commit -m "Your commit message here"`.<br>
-Pull code (Optional) `git pull origin master`.<br>
-Push origin `git push origin master`.
+Check Status `git status` .<br><br>
+Add Changes `git add .` this will use to stage all your commits .<br><br>
+Commit `git commit -m "Your commit message here"` .<br><br>
+Pull code (Optional) `git pull origin master` .<br><br>
+Push origin `git push origin master` .
 
 ## Database
 
