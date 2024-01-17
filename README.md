@@ -1,3 +1,5 @@
+# ANGULAR PROJECT
+
 # DevisMasala
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
@@ -22,11 +24,26 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Git commands
+
+How to push code to `Github`
+
+Check Status `git status`.<br>
+Add Changes `git add .` this will use to stage all your commits.<br>
+Commit `git commit -m "Your commit message here"`.<br>
+Pull code (Optional) `git pull origin master`.<br>
+Push origin `git push origin master`.
+
+## Database
+
+[Firebase](https://firebase.google.com/) page
+
+## CSS frameworks
+
+[Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) . <br>
+[Primeng](https://primeng.org/) .
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Fetch dta
-
-[Firebase]
 
