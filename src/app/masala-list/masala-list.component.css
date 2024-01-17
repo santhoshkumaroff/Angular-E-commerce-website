@@ -17,11 +17,15 @@
     
 }
 .content .p-title{
-    font-size: 40px;
+    font-size: 28px;
+    padding-left:15px;
+    padding-top: 5px;
+    padding-right: 20px;
     position: relative;
     margin-left: 6%;
-    text-transform: capitalize;
     opacity: 0.7;
+    border-radius: 5px;
+
 }
 .category{
     display: grid;
@@ -36,7 +40,7 @@ img{
     justify-content: center;
     flex-direction: column;
 }
-p{
+.content p{
     display: flex;
     justify-content: center;
     padding: 5px;
@@ -46,16 +50,89 @@ p{
     cursor: pointer;
     
 }
-p:hover {
+.content p:hover {
     background: linear-gradient(to right, #ab9b25, transparent);
   }
   
  /* Add this style to highlight the active p tag */
-.active p {
+.content .active p {
     color: #fff;
     background: linear-gradient(to right, #ab9b25, transparent);
 
   }
+  .product_detailed p{
+    background: linear-gradient(to right, #ab9b25, transparent);
+    padding: 10px;
+
+  }
+  
+  .searchBox {
+    position: relative;
+    top: 50%;
+    left: 5%;
+    background: #2f3640;
+    height: 40px;
+    border-radius: 60px;
+    padding: 8px;
+  }
+  
+  .searchBox:hover > .searchInput,
+  .searchInput:focus {
+    width: 240px;
+    padding: 0 6px;
+  }
+  
+  .searchBox:hover > .searchButton {
+    background: white;
+    color: #2f3640;
+  }
+  .fa-search{
+font-size: small;  }
+  .searchButton {
+    color: white;
+    float: right;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+  }
+  .noresult-msg{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .searchInput {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 14px;
+    transition: 0.4s;
+    line-height: 30px;
+    width: 0px;
+  }
+  .product_detailed{
+    width: 100%;
+  }
+  .product_detailed .product-img{
+    width: 70%;
+  }
+  .product_detailed .product-content {
+    width: 100%;
+  }
+  @media screen and (max-width: 620px) {
+    .searchBox:hover > .searchInput {
+      width: 150px;
+      padding: 0 6px;
+    }
+  }
+  
   
   /* You can also style the background or add other styles as needed */
 

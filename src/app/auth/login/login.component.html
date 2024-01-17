@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center content">
+        <div class="col-4 mt-5 w-50">
+            <div class="card w-100">
+                <div class="card-body p-3">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-white">Login</h4>
+                        </div>
+                        <div class="mb-3">
+                          <label  class="form-label">Email</label>
+                          <input type="email" class="form-control bg-transparent" name="email" [(ngModel)]="email">
+                        </div>
+                        <div class="mb-3">
+                          <label  class="form-label">Password</label>
+                          <input type="password" class="form-control bg-transparent" name="password" [(ngModel)]="password">
+                        </div>
+                        <button type="button" class="btn btn-dark" (click)="login()">Login</button>
+                        <div class="row w-100 d-flex justify-content-between mt-3">
+                            <div class="col-md-6">
+                                <a href="/register" style="text-decoration: none;">Need Account ? <span class="text-info">Register</span></a>
+                            </div>
+                            <div class="col-md-6" style="text-align: right;">
+                                <a href="/forgot-password" class="text-white" style="text-decoration: none;"> Forgot Password ? </a>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <a style="text-decoration: none;">
+                                <div class="card shadow text-center">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <div class="pointer" (click)="signInWithGoogle()">
+                                        <img src="../../../assets/icons8-google-48.png" alt="" height="24px" width="24px"> Sign In with Google
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.main-container{
+    margin: auto;
+    background-color: black;
+    margin-top: -1px;
+}
+.product_detailed{
+    background-color: black;
+}
+p{
+    background: linear-gradient(to right, #ab9b25, transparent);
+    padding: 5px;
+}

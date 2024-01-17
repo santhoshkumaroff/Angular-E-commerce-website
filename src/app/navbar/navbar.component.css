@@ -44,7 +44,6 @@ ul {
   margin: 0;
   display: flex;
   background-color: black;
-
 }
 
 
@@ -83,22 +82,8 @@ ul {
     opacity: 1;
   } */
 
-/* our products button */
+/* Mobile responsive */
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* e */
-/* Mobile responsive  */
 @media (max-width: 768px) {
   .main-container {
     background-size: cover;

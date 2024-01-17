@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  get isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }

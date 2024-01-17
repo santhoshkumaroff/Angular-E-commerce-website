@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,HostListener } from '@angular/core';
+import { AuthService} from '../app/auth/auth.service'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Devis_Masala';
+
+  constructor(private authService: AuthService) {}
+
+  @HostListener('document:mousemove')
+  @HostListener('document:keypress')
+  onUserActivity() {
+    this.authService.resetActivityTime();
+  }
 }

@@ -1,46 +1,40 @@
-<!-- <app-navbar></app-navbar> -->
-<form #f = "ngForm" (ngSubmit)="addData(f)">
-  <input type="text" name = "name" ngModel>
-  <br>
-  <input type="email" name="email" ngModel><br>
-  <input type="password" name="password" ngModel><br>
-  <button type="submit">
-Save data
-  </button>
-</form>
+<app-navbar></app-navbar>
+<!-- <button (click)="addData()"></button> -->
 <div class="main-container">
   <div class="main-content">
-    <div class="content mt-5">
-      <h3 class="p-title mb-0">Category</h3>
+    <div class="content mt-1" *ngIf="!displayproduct">
+      <!-- <h3 class="p-title mb-0">Category</h3> -->
       <div class="row m-0 p-0">
-        <div *ngFor="let product of products" class="col-md-3 mb-4 d-flex justify-content-center flex-column"
+        <div *ngFor="let product of Object.values(products)" class="col-md-3 mb-4 d-flex justify-content-center flex-column"
           [ngClass]="{'active': activeProduct === product}" (click)="setActiveProduct(product)">
           <img [src]="product.imageUrl" alt="{{ product.name }} Image">
           <p>{{ product.name }}</p>
         </div>
         <div class="products">
-          <h3 class="p-title">Products</h3>
-          <div *ngIf="!selectedProduct">
-            <div >
-              <div class="row p-0 m-0">
-                <div *ngFor="let item of subdatas" class="col-md-3 mb-4">
-                  <img [src]="item.imageUrl" alt="{{ item.name }} Image">
-                  <p>{{ item.name }}</p>
-                </div>
-               
-              </div>
+          <div class="d-flex">
+            <h3 class="p-title">Products</h3>
+            <!-- (focusout)="clearSearchTerm()" -->
+            <div class="searchBox">
+              <input class="searchInput" type="text" name="" placeholder="Search" [(ngModel)]="searchTerm"
+                (input)="filterProducts()" />
+              <button class="searchButton" href="#">
+                <i class="fas fa-search"></i>
+              </button>
             </div>
           </div>
+          
           <!--  -->
+          <div class="noresult-msg">
+            <div class="mt-5 mb-5" *ngIf="!(selectedProduct && selectedProduct.selected_products && selectedProduct.selected_products.length > 0)">
+              No products found.
+            </div>
+          </div>
           <div>
-            <div *ngIf="selectedProduct">
-              <div *ngIf="selectedProduct.selected_products">
-                <div class="row m-0 p-0">
-                  <div *ngFor="let item of selectedProduct.selected_products" class="col-md-3 mb-4 ">
-                    <img [src]="item.imageUrl" alt="{{ item.name }} Image">
-                    <p>{{ item.name }}</p>
-                    <!-- <h5>{{ selectedProduct.name }}</h5> -->
-                  </div>
+            <div *ngIf="selectedProduct && selectedProduct.selected_products && selectedProduct.selected_products.length > 0">
+              <div class="row m-0 p-0">
+                <div *ngFor="let item of selectedProduct.selected_products" class="col-md-3 mb-4" (click)="Productdetail(item,selectedProduct)">
+                  <img [src]="item.imageUrl" alt="{{ item.name }} Image" />
+                  <p>{{ item.name }}</p>
                 </div>
               </div>
             </div>
@@ -48,5 +42,44 @@ Save data
         </div>
       </div>
     </div>
+    <!-- <div class="product_detailed mt-5">
+      <div *ngIf="product_detail">
+        <div class="d-flex">
+          <div class="product-img">
+            <img [src]="product_detail.imageUrl"  alt="{{product_detail.imageUrl}} Image" />
+          </div>
+          <div class="product-content">
+            <p>{{product_detail.name}}</p>
+            <hr>
+            <div class="mt-1">
+              <div>
+                <h3>Description</h3>
+              </div>
+              {{product_detail.description}}
+            </div>
+            <hr>
+            <div class="">
+              <h3>Packaging Available In</h3>
+            </div>
+            <div class="d-flex gap-3" *ngFor="let quantity of product_detail.quantity; let i = index">
+              <div  *ngFor="let gram of quantity.gram">
+                {{ gram }} g
+              </div>
+              <div  *ngFor="let kg of quantity.kilogram">
+                {{ kg }} kg
+              </div>
+            </div>
+            <div class="mt-2">
+            <span>Price :</span>  {{product_detail.price}} <span>&#8360;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+    </div> -->
   </div>
+</div>
+<div>
+  <app-footer></app-footer>
 </div>

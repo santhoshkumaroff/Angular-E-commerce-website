@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center content">
+        <div class="col"></div>
+        <div class="col-4 w-50">
+            <div class="card w-100">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-white">Register</h4>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" class="form-control bg-transparent" name="email" [(ngModel)]="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control bg-transparent" name="password" 
+                            [(ngModel)]="password" (input)="checkPasswordStrength()">
+                            <div *ngIf="passwordTooWeak" class="text-danger">Password should be at least 6 characters</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputConfirmPassword1" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control bg-transparent" name="confirmPassword"
+                                [(ngModel)]="confirmPassword" (input)="checkPasswordMatch()">
+                            <div *ngIf="passwordsDoNotMatch" class="text-danger">Passwords do not match</div>
+                        </div>
+                        <button type="button" class="btn btn-dark" (click)="register()">Register</button>
+                        <div class="row">
+                            <div class="col-md-6 mt-3">
+                                <a href="/login" style="text-decoration: none;">Have an account ? <span
+                                        class="text-info">Login</span></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

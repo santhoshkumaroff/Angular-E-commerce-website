@@ -1,4 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
 body{
     margin: auto;
     color: #fff;
@@ -22,3 +24,23 @@ body{
 	width: 6px;
 	background-color: #F5F5F5;
 } */
+/* * {
+	--scrollbar-color: #00000000;
+  }
+  
+  *:hover, *:focus, *:focus-within {
+	--scrollbar-color: #00000040 !important;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+	background-color: #00000000;
+	border: 5px solid transparent;
+	border-radius: 24px;
+	box-shadow: 4px 0px 0px 4px var(--scrollbar-color) inset;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+	background-color: var(--scrollbar-color);
+	border: 0px solid transparent;
+	box-shadow: none;
+  } */

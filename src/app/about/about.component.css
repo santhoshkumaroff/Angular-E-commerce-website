@@ -1,0 +1,10 @@
+.main-content{
+    color:black
+}
+.left-content{
+    width: 80%;
+    margin-left: 5rem;
+}
+.right-content img{
+    border-radius: 10%;
+}

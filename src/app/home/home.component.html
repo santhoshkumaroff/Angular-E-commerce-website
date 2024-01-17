@@ -1,50 +1,57 @@
 <div class="main-container">
-    <div class="image-nav" >
-        <div class="site-logo">
-            <img src="../../assets/logo.jpg"  alt="no image">
-        </div>
-        <div class="navigation_menu">
-            <ul>
-                <li>
-                    <a routerLink="" class="home">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="" class="about_us">
-                        About us
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="masala" class="products">
-                        Masalas
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="" class="contact_us">
-                        Contact us
-                    </a>
-                </li>
-            </ul>
+  <div class="image-nav">
+    <div class="site-logo">
+      <img src="../../assets/logo.jpg" alt="no image">
+    </div>
+    <div class="navigation_menu">
+      <ul>
+        <li>
+          <a routerLink="" class="home">
+            Home
+          </a>
+        </li>
+        <li>
+          <a routerLink="/products" class="products">
+            Products
+          </a>
+        </li>
+        <li>
+          <a routerLink="/about" class="about_us">
+            About us
+          </a>
+        </li>
+        <li>
+          <a routerLink="/contact" class="contact_us">
+            Contact us
+          </a>
+        </li>
+        <li *ngIf="!isLoggedIn">
+          <a routerLink="/login" class="Login">Login</a>
+        </li>
+        <li *ngIf="isLoggedIn">
+          <a routerLink="/account" class="Account">Account</a>
+        </li>
+      </ul>
 
-
-        </div>
 
     </div>
-    <div class="middle">
-  <!-- <div class="image">
+
+  </div>
+  <div class="middle">
+    <!-- <div class="image">
     <img src="../../assets/items.png" alt="">
   </div> -->
-        <div class="slogan">
-            <div class="text col-12 col-md-12">
-                "Spice up your life where flavor meets adventure!"
-            </div>
-            <div class="button" routerLink="masala">
-                <button class="explore" routerLink="../masala">Our products<span class="icon-right" ></span>
-                    <span class="icon-right after" ></span></button>
-            </div> 
-        </div>
+    <div class="slogan">
+      <div class="text col-12 col-md-12">
+        "Spice up meals with premium masala & flavors"
+
+      </div>
+      <div class="button" routerLink="/products">
+        <button class="explore" routerLink="../masala">Our products<span class="icon-right"></span>
+          <span class="icon-right after"></span></button>
+      </div>
     </div>
+  </div>
 </div>
 
 
@@ -73,29 +80,33 @@
   </div>
 </div> -->
 <div class="best-seller container-fluid p-0 mt-5 p-3 d-flex justify-content-space-between">
-    <div class="d-flex container-fluid align-items-center  ">
-        <div class="text ">Best Seller
-            <br>
-            <div style="font-size: x-large;">
-                Ignite Your Culinary Creativity with Devis Masala! Elevate every dish with our top-selling <span class="highlight">{{ dynamicContent }}</span>.  
-                Unleash the magic of our spice powders with easy recipes on our website. Transform ordinary meals into extraordinary experiences—shop now for the finest flavors! 
-            </div>
-        </div>
-       
+  <div class="d-flex container-fluid align-items-center  ">
+    <div class="text ">Best Seller
+      <br>
+      <div style="font-size: x-large;">
+        Ignite Your Culinary Creativity with Devis Masala! Elevate every dish with our top-selling <span
+          class="highlight">{{ dynamicContent }}</span>.
+        Unleash the magic of our spice powders with easy recipes on our website. Transform ordinary meals into
+        extraordinary experiences—shop now for the finest flavors!
+      </div>
+    </div>
 
+
+  </div>
+  <div class="slider-dots">
+    <div class="slider mt-5 " *ngIf="firstImagePath.length > 0 ">
+      <img [@fadeInOut]="currentImageIndex" [src]="firstImagePath[currentImageIndex]" alt="best-seller"
+        class="slider-image">
     </div>
-    <div class="slider-dots" >
-        <div class="slider mt-5 " *ngIf="firstImagePath.length > 0 ">
-            <img [@fadeInOut]="currentImageIndex" [src]="firstImagePath[currentImageIndex]" alt="best-seller" class="slider-image">
-          </div>
-          <div class="dots">
-            <span *ngFor="let image of firstImagePath; let i = index" (click)="setCurrentImage(i)" [class.active]="i === currentImageIndex"></span>
-          </div>
+    <div class="dots">
+      <span *ngFor="let image of firstImagePath; let i = index" (click)="setCurrentImage(i)"
+        [class.active]="i === currentImageIndex"></span>
     </div>
-      
-    
+  </div>
+
+
 </div>
-    <!-- <br>
+<!-- <br>
       <br>
       <button class="back" (click)="changeImage(-1)">Back</button>
       <button class="next" (click)="changeImage(1)">Next</button> -->
@@ -134,40 +145,73 @@
     </div>
 </section> -->
 <!-- e -->
+<div class="imgcontent mt-5">
+  <div class="centerimg"></div>
+  <div class="center" style="color: white;">
+    <div class="top-products">
+        <h2 class="d-flex justify-content-center ">Instant rice podi</h2>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="product-carousel">
+                <div class="row">
+                  <div *ngFor="let product of visibleProducts; let i = index" class="col-md-2">
+                    <div class="product-container" [style.filter]="i === centeredIndex ? 'none' : 'blur(2px)'" [style.transform]="i === centeredIndex ? 'scale(1.3)' : 'scale(1)'">
+                      <img src="{{ product.imageUrl }}" alt="{{ product.imageUrl }}" class="img-fluid" />
+                      <p class="product-name">{{ product.name }}</p>
+                    </div>
+                  </div>
+                  
+                  <div class="dots instant mt-5">
+                    <span *ngFor="let product of visibleProducts; let i = index" [class.active]="i === currentIndex" (click)="setIndex(i)"></span>
+                  </div>
+                  
+                </div>
+              </div>
+              <!-- <div class="text-center mt-3">
+                <button class="btn btn-primary" (click)="showPrevious()">Previous</button>
+                <button class="btn btn-primary" (click)="showNext()">Next</button>
+              </div> -->
+            </div>
+          </div>
+      </div>
+    </div> 
+   </div>
 
-<div class="global-service mt-5 container-fluid">
-    <h2>Our Global Services</h2>
-    <div class="row gap-5 container-fluid mt-3 justify-content-center countries">
-        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
-            <img src="../../assets/malaysia.png" class="card-img" alt="...">
-          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
-            <h3 class="card-title display-8">Malaysia</h3>
-          </div>
-        </div>
-        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
-            <img src="../../assets/dubai.png" class="card-img" alt="...">
-          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
-            <h3 class="card-title display-8">Dubai</h3>
-          </div>
-        </div>
-        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
-            <img src="../../assets/australia.svg" class="card-img" alt="...">
-          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
-            <h3 class="card-title display-8">Australia</h3>
-          </div>
-        </div>
-        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
-            <img src="../../assets/singapore.png" class="card-img" alt="...">
-          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
-            <h3 class="card-title display-8">Singapore</h3>
-          </div>
-        </div>
-        <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
-            <img src="../../assets/sri lanka.svg" class="card-img" alt="...">
-          <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
-            <h3 class="card-title display-8">Sri Lanka</h3>
-          </div>
-        </div>
-
+<div class="global-service mt-5 container-fluid mb-5">
+  <h2>Our Global Services</h2>
+  <div class="row gap-5 container-fluid mt-3 justify-content-center countries">
+    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list">
+      <img src="../../assets/malaysia.png" class="card-img" alt="...">
+      <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+        <span class="card-title display-8">Malaysia</span>
+      </div>
     </div>
+    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+      <img src="../../assets/dubai.png" class="card-img" alt="...">
+      <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+        <span class="card-title display-8">Dubai</span>
+      </div>
+    </div>
+    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+      <img src="../../assets/australia.svg" class="card-img" alt="...">
+      <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+        <span class="card-title display-8">Australia</span>
+      </div>
+    </div>
+    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+      <img src="../../assets/singapore.png" class="card-img" alt="...">
+      <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+        <span class="card-title display-8">Singapore</span>
+      </div>
+    </div>
+    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+      <img src="../../assets/sri lanka.svg" class="card-img" alt="...">
+      <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
+        <span class="card-title display-8">Sri Lanka</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="">
+  <app-footer></app-footer>
 </div>

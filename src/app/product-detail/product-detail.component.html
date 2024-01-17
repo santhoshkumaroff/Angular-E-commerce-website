@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+   <div class="product_detailed p-5">
+      <div *ngIf="product_detail">
+        <div class="d-flex">
+          <div class="product-img">
+            <img [src]="product_detail.imageUrl"  alt="{{product_detail.imageUrl}} Image" />
+          </div>
+          <div class="product-content">
+            <p>{{product_detail.name}}</p>
+            <hr>
+            <div class="mt-1">
+              <div>
+                <h3>Description</h3>
+              </div>
+              {{product_detail.description}}
+            </div>
+            <hr>
+            <div class="">
+              <h3>Packaging Available In</h3>
+            </div>
+            <div class="d-flex gap-3" *ngFor="let quantity of product_detail.quantity; let i = index">
+              <div  *ngFor="let gram of quantity.gram">
+                {{ gram }} g
+              </div>
+              <div  *ngFor="let kg of quantity.kilogram">
+                {{ kg }} kg
+              </div>
+            </div>
+            <div class="mt-2">
+            <span>Price :</span>  {{product_detail.price}} <span>&#8360;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!product_detail">
+        <div class="w-100 d-flex justify-content-center">
+            No records found
+        </div>
+      </div>
+
+    </div>
+
+
+</div>
+<app-footer></app-footer>

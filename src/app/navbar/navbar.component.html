@@ -12,30 +12,34 @@
                         </a>
                     </li>
                     <li>
-                        <a routerLink="home" class="about_us">
+                        <a routerLink="/products" class="masalas">
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/about" class="about_us">
                             About us
                         </a>
                     </li>
                     <li>
-                        <a routerLink="home" class="products">
-                            Masalas
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="home" class="contact_us">
+                        <a routerLink="/contact" class="contact_us">
                             Contact us
                         </a>
                     </li>
+                    <li *ngIf="!isLoggedIn">
+                        <a routerLink="/login" class="Login">Login</a>
+                      </li>
+                      <li *ngIf="isLoggedIn">
+                        <a routerLink="/account" class="Account">Account</a>
+                      </li>
                 </ul>
             </div>
         </div>
         </div>
-        <app-masala-list></app-masala-list>
-
-        <footer>
+        <!-- <footer>
             <div class="content">
         <h3>jhhsd</h3>
             </div>
-        </footer>
+        </footer> -->
         
 </div>
