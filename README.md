@@ -1,6 +1,7 @@
 # ANGULAR PROJECT
 
-### Project Name : DevisMasala
+### Project Client : DevisMasala
+### Project Type : E-Commerce
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
