@@ -78,13 +78,14 @@ export class AuthService {
 
   // Google sign in
   googleSignIn() {
-    return this.auth.signInWithPopup(new GoogleAuthProvider).then(res => {
+    const auth: Auth = getAuth(); // Access the Auth instance
+  
+    return signInWithPopup(auth, new GoogleAuthProvider()).then(res => {
       localStorage.setItem('token', JSON.stringify(res.user?.uid));
       this.router.navigate(['/home']);
-
     }, err => {
       alert(err.message);
-    })
+    });
   }
   get isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
