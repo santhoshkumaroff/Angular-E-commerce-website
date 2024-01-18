@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "ecommerce12052023",
+    "default": "devismasala-database",
     "ecommerce": "devismasala-database"
   },
   "targets": {
