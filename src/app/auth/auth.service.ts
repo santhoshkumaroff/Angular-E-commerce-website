@@ -78,20 +78,13 @@ export class AuthService {
 
   // Google sign in
   googleSignIn() {
-    const provider = new GoogleAuthProvider();
-    
-    // Get the underlying Auth object using getAuth() function
-    const authInstance: Auth = getAuth();
+    return this.auth.signInWithPopup(new GoogleAuthProvider).then(res => {
+      localStorage.setItem('token', JSON.stringify(res.user?.uid));
+      this.router.navigate(['/dashboard']);
 
-    return signInWithPopup(authInstance, provider)
-      .then((res) => {
-        localStorage.setItem('token', JSON.stringify(res.user?.uid));
-        this.router.navigate(['/home']);
-      })
-      .catch((err) => {
-        console.error("Popup Error",err);
-        alert(err.message);
-      });
+    }, err => {
+      alert(err.message);
+    })
   }
   get isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
