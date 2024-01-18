@@ -10,6 +10,13 @@
           "devismasala"
         ]
       }
+    },
+    "devismasala-database": {
+      "hosting": {
+        "Devis_Masala": [
+          "resource"
+        ]
+      }
     }
   },
   "etags": {}
