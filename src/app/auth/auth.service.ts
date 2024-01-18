@@ -80,7 +80,7 @@ export class AuthService {
   googleSignIn() {
     return this.auth.signInWithPopup(new GoogleAuthProvider).then(res => {
       localStorage.setItem('token', JSON.stringify(res.user?.uid));
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/home']);
 
     }, err => {
       alert(err.message);
