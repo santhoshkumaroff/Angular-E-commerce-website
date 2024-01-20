@@ -15,7 +15,6 @@ export class ServiceService {
   }
 
   getProductDetail() {
-    
     const data = this.productDetail;
     return data;    
   }

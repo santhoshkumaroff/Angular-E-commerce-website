@@ -20,7 +20,7 @@ import { CountUpModule } from 'ngx-countup';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
-import { AuthService } from '../app/auth/auth.service';
+import { AuthService } from './auth/auth.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AccountComponent } from './account/account.component';
@@ -47,7 +47,10 @@ import { AccountComponent } from './account/account.component';
     CountUpModule,
     BrowserAnimationsModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore())
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideDatabase(() => getDatabase()),

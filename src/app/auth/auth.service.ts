@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { GoogleAuthProvider, signInWithPopup,AuthProvider ,getAuth, Auth } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router';
+import firebase from '@firebase/app-compat';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  // user$: Observable<User |null>;
 
   forgotPassword(email: string) {
     this.auth.sendPasswordResetEmail(email).then(() => {
@@ -48,7 +50,7 @@ export class AuthService {
       this.resetActivityTime();
       this.router.navigate(['/home'])
     }, err => {
-      alert(err.message);
+      alert("Login");
       this.router.navigate(['/login']);
     })
   }
@@ -60,7 +62,7 @@ export class AuthService {
       alert("Registration successfull !!!")
       this.router.navigate(['/login']);
     }, err => {
-      alert(err.message);
+      alert("Register");
       this.router.navigate(['/register'])
     })
   }
@@ -72,21 +74,40 @@ export class AuthService {
       localStorage.removeItem('token');
       this.router.navigate(['/home']);
     }, err => {
-      alert(err.message)
+      alert("Logout")
     })
   }
 
   // Google sign in
+  // googleSignIn() {
+  //   const provider = new firebase.auth.GoogleAuthProvider();
+  //   const popup = this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => {
+  //     localStorage.setItem('token', JSON.stringify(res.user?.uid));
+  //     this.router.navigate(['/home']);
+  //   }, err => {
+  //     console.log("Error Google SignIn"); 
+  //   })
+  //   return popup;
+  // }
+
   googleSignIn() {
-    const auth: Auth = getAuth(); // Access the Auth instance
-  
-    return signInWithPopup(auth, new GoogleAuthProvider()).then(res => {
-      localStorage.setItem('token', JSON.stringify(res.user?.uid));
-      this.router.navigate(['/home']);
-    }, err => {
-      alert(err.message);
-    });
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return this.auth.signInWithPopup(provider)
+      .then((res) => {
+        localStorage.setItem('token', JSON.stringify(res.user?.uid));
+        this.router.navigate(['/home']);
+      })
+      .catch((err) => {
+        if (err.code === 'auth/popup-closed-by-user') {
+          // User closed the popup, handle it gracefully (e.g., show a message)
+          console.log('Authentication popup closed by the user');
+        } else {
+          // Handle other authentication errors
+          console.error("Authentication ",err);
+        }
+      });
   }
+  
   get isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }

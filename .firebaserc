@@ -4,17 +4,17 @@
     "ecommerce": "devismasala-database"
   },
   "targets": {
-    "ecommerce12052023": {
-      "hosting": {
-        "Devis_Masala": [
-          "devismasala"
-        ]
-      }
-    },
     "devismasala-database": {
       "hosting": {
         "Devis_Masala": [
           "resource"
+        ]
+      }
+    },
+    "ecommerce12052023": {
+      "hosting": {
+        "Devis_Masala": [
+          "devismasala"
         ]
       }
     }

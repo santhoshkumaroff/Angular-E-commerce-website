@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
   signInWithGoogle() {
     this.auth.googleSignIn().then(() =>{
-      console.log("Successfully SignedIn");
+      console.log("Successfully Or Closed");
       
     }).catch((err) =>{
       alert(err.message)
