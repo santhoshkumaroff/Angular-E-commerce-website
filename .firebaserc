@@ -1,7 +1,8 @@
 {
   "projects": {
     "default": "devismasala-database",
-    "ecommerce": "devismasala-database"
+    "ecommerce": "devismasala-database",
+    "devismasala": "devismasala-database"
   },
   "targets": {
     "devismasala-database": {

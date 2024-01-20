@@ -10,14 +10,6 @@ import firebase from '@firebase/app-compat';
 export class AuthService {
   // user$: Observable<User |null>;
 
-  forgotPassword(email: string) {
-    this.auth.sendPasswordResetEmail(email).then(() => {
-      this.router.navigate(['/verify-email']);
-    }, err => {
-      alert('Something went wrong');
-    })
-  }
-
   constructor(private auth: AngularFireAuth, private router: Router) {
     this.lastActivityTime = Date.now();
     this.initializeAutoLogout();
@@ -36,7 +28,7 @@ export class AuthService {
     const inactiveTime = Date.now() - this.lastActivityTime;
     const inactivityThreshold = 600000; // 10 minutes in milliseconds
 
-    return inactiveTime > inactivityThreshold;
+    return inactiveTime > inactivityThreshold && this.isLoggedIn;
   }
 
    resetActivityTime() {
@@ -107,7 +99,14 @@ export class AuthService {
         }
       });
   }
-  
+  forgotPassword(email: string) {
+    this.auth.sendPasswordResetEmail(email).then(() => {
+      this.router.navigate(['/verify-email']);
+    }, err => {
+      alert('Something went wrong');
+    })
+  }
+
   get isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
