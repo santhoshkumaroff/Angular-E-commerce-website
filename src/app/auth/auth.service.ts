@@ -25,10 +25,13 @@ export class AuthService {
     }, 60000); // 1 minute interval
   }
   private shouldLogout(): boolean {
+    if (!this.isLoggedIn) {
+      return false;  // No need to logout if the user is not logged in
+    }
     const inactiveTime = Date.now() - this.lastActivityTime;
     const inactivityThreshold = 600000; // 10 minutes in milliseconds
 
-    return inactiveTime > inactivityThreshold && this.isLoggedIn;
+    return inactiveTime > inactivityThreshold;
   }
 
    resetActivityTime() {
