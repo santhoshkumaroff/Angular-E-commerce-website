@@ -45,6 +45,7 @@ export class AuthService {
       this.resetActivityTime();
       this.router.navigate(['/home'])
     }, err => {
+      console.log("Login");
       alert("Login");
       this.router.navigate(['/login']);
     })
@@ -57,6 +58,8 @@ export class AuthService {
       alert("Registration successfull !!!")
       this.router.navigate(['/login']);
     }, err => {
+      console.log("register");
+      
       alert("Register");
       this.router.navigate(['/register'])
     })
@@ -69,6 +72,8 @@ export class AuthService {
       localStorage.removeItem('token');
       this.router.navigate(['/home']);
     }, err => {
+      console.log("logout");
+      
       alert("Logout")
     })
   }
@@ -93,6 +98,8 @@ export class AuthService {
         this.router.navigate(['/home']);
       })
       .catch((err) => {
+        console.log("G with signin");
+        
         if (err.code === 'auth/popup-closed-by-user') {
           // User closed the popup, handle it gracefully (e.g., show a message)
           console.log('Authentication popup closed by the user');
@@ -106,6 +113,8 @@ export class AuthService {
     this.auth.sendPasswordResetEmail(email).then(() => {
       this.router.navigate(['/verify-email']);
     }, err => {
+      console.log("Forget pass");
+      
       alert('Something went wrong');
     })
   }
