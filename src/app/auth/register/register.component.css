@@ -35,6 +35,13 @@
 .card-body input{
     color: white;
 }
+.input-group-append i{
+    color: black;
+}
+
+
+
+
 /* Mobile responsive */
 
 @media (max-width: 720px)  {

@@ -14,13 +14,14 @@
                         <div class="mb-3">
                           <label  class="form-label">Password</label>
                           <div class="input-group">
-                            <input type="password" class="form-control bg-transparent" name="password" [(ngModel)]="password">
+                            <input type="{{ inputType }}" class="form-control bg-transparent" name="password" [(ngModel)]="password">
                             <div class="input-group-append">
-                              <span class="input-group-text">
-                                <i class="far" [ngClass]="{'fa-solid fa-eye': showPassword, 'fa-eye-slash': !showPassword}" (click)="togglePasswordVisibility()"></i>
+                              <span class="input-group-text text-dark">
+                                <i class="far" [ngClass]="{'fa-eye': inputType === 'text', 'fa-eye-slash': inputType === 'password'}" (click)="togglePasswordVisibility()"></i>
                               </span>
                             </div>
                           </div>
+                          
                           
                         </div>
                         <button type="button" class="btn btn-dark" (click)="login()">Login</button>

@@ -14,14 +14,33 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control bg-transparent" name="password" 
-                            [(ngModel)]="password" (input)="checkPasswordStrength()">
-                            <div *ngIf="passwordTooWeak" class="text-danger">Password should be at least 6 characters</div>
+                            <div class="input-group">
+                                <input type="{{inputType}}" class="form-control bg-transparent" name="password"
+                                    [(ngModel)]="password" (input)="checkPasswordStrength()">
+                                <div class="input-group-append">
+                                    <span class="input-group-text text-dark">
+                                        <i class="far"
+                                            [ngClass]="{'fa-eye': inputType === 'text', 'fa-eye-slash': inputType === 'password'}"
+                                            (click)="togglePasswordVisibility()"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div *ngIf="passwordTooWeak" class="text-danger">Password should be at least 6 characters
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputConfirmPassword1" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control bg-transparent" name="confirmPassword"
-                                [(ngModel)]="confirmPassword" (input)="checkPasswordMatch()">
+                            <div class="input-group">
+                                <input type="{{inputType}}" class="form-control bg-transparent" name="confirmPassword"
+                                    [(ngModel)]="confirmPassword" (input)="checkPasswordMatch()">
+                                <div class="input-group-append">
+                                    <span class="input-group-text text-dark">
+                                        <i class="far"
+                                            [ngClass]="{'fa-eye': inputType === 'text', 'fa-eye-slash': inputType === 'password'}"
+                                            (click)="togglePasswordVisibility()"></i>
+                                    </span>
+                                </div>
+                            </div>
                             <div *ngIf="passwordsDoNotMatch" class="text-danger">Passwords do not match</div>
                         </div>
                         <button type="button" class="btn btn-dark" (click)="register()">Register</button>

@@ -37,7 +37,9 @@
 .login-content{
     width: 50%;
 }
-
+.input-group-append i{
+    color: black;
+}
 
 /* Mobile responsive */
 

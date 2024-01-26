@@ -15,6 +15,11 @@ export class RegisterComponent implements OnInit {
   passwordTooWeak: boolean = false;
 
   constructor(private auth: AuthService) { }
+  inputType: string = 'password';
+
+  togglePasswordVisibility() {
+    this.inputType = this.inputType === 'password' ? 'text' : 'password';
+  }
 
   ngOnInit(): void {
   }
@@ -65,4 +70,5 @@ export class RegisterComponent implements OnInit {
     this.passwordsDoNotMatch = this.password !== this.confirmPassword;
   }
 
+ 
 }

@@ -9,15 +9,15 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   email : string = '';
+  password : string = '';
 
   constructor(private auth : AuthService) { 
     console.log('LoginComponent constructor called');
   }
-  password: string = '';
-  showPassword: boolean = false;
+  inputType: string = 'password';
 
   togglePasswordVisibility() {
-    this.showPassword = !this.password;
+    this.inputType = this.inputType === 'password' ? 'text' : 'password';
   }
   ngOnInit(): void {
   }
