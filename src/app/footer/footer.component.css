@@ -3,6 +3,10 @@ ul {
   margin: 0px;
   padding: 0px;
 }
+.footer-widget ul{
+  display: flex;
+  justify-content: space-between;
+}
 .footer-section {
 background: #151414;
 position: relative;

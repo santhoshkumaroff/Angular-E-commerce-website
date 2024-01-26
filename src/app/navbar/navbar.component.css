@@ -10,8 +10,10 @@ a {
   opacity: 0.7;
 }
 
-a:hover {
-  color: rgb(254, 242, 157);
+li:hover {
+  color: rgba(253, 253, 253, 0.399);
+  background: linear-gradient(to right, #ab9b25, transparent);
+  border-radius: 20%;
 }
 
 ul {
@@ -40,12 +42,21 @@ ul {
 }
 
 .main-container {
-  padding: 40px 0 0px 40px;
+  padding: 20px 0 0px 40px;
+  /* position:fixed;
+  z-index: 1;
   margin: 0;
-  display: flex;
+  display: flex; */
   background-color: black;
 }
-
+footer{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+.top-bottom{
+  background-color: black;
+}
 
 .image-nav {
   display: flex;
@@ -92,12 +103,4 @@ ul {
   .middle .text {
     font-size: xx-large;
   }
-}
-footer{
-  display: flex;
-  position: absolute;
-  bottom: 0;
-}
-.top-bottom{
-  background-color: black;
 }

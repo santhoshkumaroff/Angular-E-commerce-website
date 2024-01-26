@@ -28,3 +28,21 @@
     height: 100vh;
     align-items: center;
 }
+.login-content{
+    width: 50%;
+}
+
+.card-body input{
+    color: white;
+}
+/* Mobile responsive */
+
+@media (max-width: 720px)  {
+    .login-content{
+        width: 100%;
+    }
+    .card{
+        padding: 0;
+    }
+    
+}

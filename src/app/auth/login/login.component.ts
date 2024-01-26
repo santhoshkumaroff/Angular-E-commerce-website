@@ -9,12 +9,16 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   email : string = '';
-  password : string = '';
 
   constructor(private auth : AuthService) { 
     console.log('LoginComponent constructor called');
   }
+  password: string = '';
+  showPassword: boolean = false;
 
+  togglePasswordVisibility() {
+    this.showPassword = !this.password;
+  }
   ngOnInit(): void {
   }
 
@@ -39,7 +43,7 @@ export class LoginComponent implements OnInit {
 
   signInWithGoogle() {
     this.auth.googleSignIn().then(() =>{
-      console.log("Successfully Or Closed");
+      console.log("Successfully SignedIn");
       
     }).catch((err) =>{
       alert(err.message)

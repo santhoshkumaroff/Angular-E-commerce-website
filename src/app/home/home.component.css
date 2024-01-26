@@ -1,21 +1,25 @@
-li{
-    display: inline;
-    padding: 10px 40px;
+li {
+  display: inline;
+  padding: 10px 40px;
 }
-a{
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-    opacity: 0.7;
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  opacity: 0.7;
 }
-a:hover{
+
+a:hover {
   color: hwb(53 62% 0%);
 }
-.imgcontent{
- position: relative;
- text-align: center;
+
+.imgcontent {
+  position: relative;
+  text-align: center;
 }
-.imgcontent::before{
+
+.imgcontent::before {
   content: '';
   display: block;
   position: absolute;
@@ -24,24 +28,28 @@ a:hover{
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
-}.row{
+}
+
+.row {
   justify-content: center;
 }
 
 .product-container.centered {
-  filter: none; /* Remove blur for the centered product */
+  filter: none;
+  /* Remove blur for the centered product */
 }
 
-.product-container {
-  /* filter: blur();  */
-}
+/* .product-container {
+  filter: blur(); 
+} */
 
 .product-container.centered img.center-image {
-  filter: none; /* Remove blur for the centered product */
+  filter: none;
+  /* Remove blur for the centered product */
 }
 
 
-.centerimg{
+.centerimg {
   background-image: url('../../assets/home.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -49,7 +57,8 @@ a:hover{
   background-position: center;
   height: 500px;
 }
-.center{
+
+.center {
   position: absolute;
   width: 100%;
   top: 50%;
@@ -57,28 +66,33 @@ a:hover{
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
+
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    float: right;
-    width: 100%;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-  }
-  .navigation_menu{
-    width: 100%;
-    z-index: 2;
-  }
-  .site-logo img{
-    width: 12%;
-    border-radius: 10px;
-  }
-  .site-logo{
-    z-index: 2;
-  }
-  /* .main-container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  float: right;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.navigation_menu {
+  width: 100%;
+  z-index: 2;
+}
+
+.site-logo img {
+  width: 12%;
+  border-radius: 10px;
+}
+
+.site-logo {
+  z-index: 2;
+}
+
+/* .main-container {
     position: relative;
     background-color: #000;
     padding: 40px 0 0px 40px;
@@ -88,7 +102,7 @@ ul {
     height: 600px;
     z-index: 0;
 } */
-.main-container{
+.main-container {
   padding: 40px 0 0px 40px;
   margin: 0;
   display: flex;
@@ -101,7 +115,8 @@ ul {
   height: 500px;
 
 }
-.main-container::before{
+
+.main-container::before {
   content: '';
   display: block;
   position: absolute;
@@ -109,201 +124,217 @@ ul {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* Adjust the opacity by changing the last value (0.5 in this case) */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Adjust the opacity by changing the last value (0.5 in this case) */
 
 }
 
-.image-nav{
-display: flex;
-width: 100%;
+.image-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
-/* Media query for screens with a maximum width of 768 pixels (typical for tablets and mobile devices) */
 
+.middle {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  z-index: 2;
+  /* padding-inline: 10px; */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-        /* background-color: rgba(0, 0, 0, 0.9); */
+.slogan {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
+.middle .text {
+  font-size: xxx-large;
+  opacity: 0.5;
+  animation: fadeIn 3s ease-in-out;
+}
 
- 
+.image {
+  width: 30%;
+}
 
-  .middle {
-    position: absolute;
-    top: 40%;
-    right: 0;
-    z-index: 2;
-    /* padding-inline: 10px; */
-    display: flex;
-    justify-content: center;
-    width: 100%;
+.image img {
+  width: 100%;
+  height: 50%;
+  border-radius: 50%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  .slogan{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .middle .text{
-    font-size:xxx-large;
+
+  to {
     opacity: 0.5;
-    animation: fadeIn 3s ease-in-out;
   }
-  .image{
-    width: 30%;
-  }
-  .image img{
-    width: 100%;
-    height: 50%;
-    border-radius:50% ;
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0; 
-    }
-    to {
-      opacity: 0.5;
-    }
-  }
- 
+}
 
- 
-      /* .container:hover .image {
+
+
+/* .container:hover .image {
     opacity: 0.1;
   }
   
   .container:hover .middle {
     opacity: 1;
   } */
-  
-  /* our products button */
-.button{
+
+/* our products button */
+.button {
   display: flex;
   margin-top: 10px;
   justify-content: center;
 }
-  .button button {
-    font-family: "Space Mono", monospace;
-    letter-spacing: 1px;
-    background: none;
-    color: rgb(254,242,157);
-    position: relative;
-    outline: none;
-    border: none;
-    height: 50px;
-    width: 190px;
-    font-size: 14px;
-    z-index: 2;
-    transition: 0.01s 0.23s ease-out all;
-    overflow: hidden;
-  }
-  .button button:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 55%;
-    background: #202020;
-    z-index: -1;
-    transition: 0.3s ease-in all;
-  }
-  .button button:after {
-    content: "";
-    position: absolute;
-    left: -5%;
-    top: 5%;
-    height: 90%;
-    width: 5%;
-    background: white;
-    z-index: -1;
-    transition: 0.4s 0.02s ease-in all;
-  }
-  .button button:hover {
-    cursor: pointer;
-    color: transparent;
-  }
-  .button button:hover:before {
-    left: 100%;
-    width: 25%;
-  }
-  .button button:hover:after {
-    left: 100%;
-    width: 70%;
-  }
-  .button button:hover .icon-right.after:after {
-    left: -80px;
-    color: white;
-    transition: 0.2s 0.2s ease all;
-  }
-  .button button:hover .icon-right.after:before {
-    left: -104px;
-    top: 14px;
-    opacity: 0.2;
-    color: white;
-  }
-  
-  .icon-right {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-  .icon-right:after {
-    font-family: "FontAwesome";
-    content: "→";
-    font-size: 24px;
-    display: inline-block;
-    position: relative;
-    top: 26px;
-    transform: translate3D(0, -50%, 0);
-  }
-  .icon-right.after:after {
-    left: -250px;
-    color: black;
-    transition: 0.15s 0.25s ease left, 0.5s 0.05s ease color;
-  }
-  .icon-right.after:before {
-    content: "Click here";
-    position: absolute;
-    left: -230px;
-    top: 14px;
-    opacity: 0;
-    transition: 0.2s ease-in all;
-  }
-  
-  .signature {
-    position: fixed;
-    font-family: sans-serif;
-    font-weight: 100;
-    bottom: 10px;
-    left: 0;
-    letter-spacing: 4px;
-    font-size: 10px;
-    width: 100vw;
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
+
+.button button {
+  font-family: "Space Mono", monospace;
+  letter-spacing: 1px;
+  background: none;
+  color: rgb(254, 242, 157);
+  position: relative;
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 190px;
+  font-size: 14px;
+  z-index: 2;
+  transition: 0.01s 0.23s ease-out all;
+  overflow: hidden;
+}
+
+.button button:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 55%;
+  background: #202020;
+  z-index: -1;
+  transition: 0.3s ease-in all;
+}
+
+.button button:after {
+  content: "";
+  position: absolute;
+  left: -5%;
+  top: 5%;
+  height: 90%;
+  width: 5%;
+  background: white;
+  z-index: -1;
+  transition: 0.4s 0.02s ease-in all;
+}
+
+.button button:hover {
+  cursor: pointer;
+  color: transparent;
+}
+
+.button button:hover:before {
+  left: 100%;
+  width: 25%;
+}
+
+.button button:hover:after {
+  left: 100%;
+  width: 70%;
+}
+
+.button button:hover .icon-right.after:after {
+  left: -80px;
+  color: white;
+  transition: 0.2s 0.2s ease all;
+}
+
+.button button:hover .icon-right.after:before {
+  left: -104px;
+  top: 14px;
+  opacity: 0.2;
+  color: white;
+}
+
+.icon-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.icon-right:after {
+  font-family: "FontAwesome";
+  content: "→";
+  font-size: 24px;
+  display: inline-block;
+  position: relative;
+  top: 26px;
+  transform: translate3D(0, -50%, 0);
+}
+
+.icon-right.after:after {
+  left: -250px;
+  color: black;
+  transition: 0.15s 0.25s ease left, 0.5s 0.05s ease color;
+}
+
+.icon-right.after:before {
+  content: "Click here";
+  position: absolute;
+  left: -230px;
+  top: 14px;
+  opacity: 0;
+  transition: 0.2s ease-in all;
+}
+
+.signature {
+  position: fixed;
+  font-family: sans-serif;
+  font-weight: 100;
+  bottom: 10px;
+  left: 0;
+  letter-spacing: 4px;
+  font-size: 10px;
+  width: 100vw;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
 
 
 
-.global-service{
+.global-service {
   color: black;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center ;
+  justify-content: center;
 }
-.countries-list{
+
+.countries-list {
   width: 10%;
 }
-.row{
+
+.row {
   margin: 0;
 }
-.card .c{
+
+.card .c {
   height: 70px;
   width: 100%;
 
 }
-.card-img{
+
+.card-img {
   height: 100%;
   object-fit: cover;
   width: 110%;
@@ -312,17 +343,20 @@ width: 100%;
 .card-img-overlay {
   color: white;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Adjust the last value for opacity */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Adjust the last value for opacity */
 }
-.card-img-overlay:hover{
+
+.card-img-overlay:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
 .card-title,
 .card-text {
-  color: white; 
+  color: white;
   opacity: 0.7;
 }
+
 .container-fluid {
   position: relative;
   overflow: hidden;
@@ -343,22 +377,28 @@ img.img-fluid {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Adjust the opacity as needed */
+  background: rgba(0, 0, 0, 0.3);
+  /* Adjust the opacity as needed */
   pointer-events: none;
 }
 
 
 .slider-image {
-  width: 300px; /* Set your desired width */
-  height: 100%; /* Set your desired height */
-  object-fit: cover; /* Adjust based on how you want the image to fit within the dimensions */
+  width: 300px;
+  /* Set your desired width */
+  height: 100%;
+  /* Set your desired height */
+  object-fit: cover;
+  /* Adjust based on how you want the image to fit within the dimensions */
 }
-.best-seller{
+
+.best-seller {
   background: url('../../assets/bestseller.jpg');
   background-position: center;
   background-size: cover;
 }
-.best-seller::before{
+
+.best-seller::before {
   content: '';
   display: block;
   position: absolute;
@@ -368,16 +408,19 @@ img.img-fluid {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
 }
-.best-seller{
+
+.best-seller {
   width: 90%;
 }
-.slider{
+
+.slider {
   width: 100%;
   display: flex;
   justify-content: center;
   z-index: 1;
 }
-.slider-dots{
+
+.slider-dots {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -385,19 +428,17 @@ img.img-fluid {
   opacity: 0.5;
 }
 
-.best-seller .text{
+.best-seller .text {
   width: 100%;
-    font-size: xxx-large;
-    font-weight: 500;
-    color: white;
-    opacity: 0.8;
-    padding: 10px;
-    text-shadow: 1px 1px 2px black;
+  font-size: xxx-large;
+  font-weight: 500;
+  color: white;
+  opacity: 0.8;
+  padding: 10px;
+  text-shadow: 1px 1px 2px black;
 }
-.best-seller{
-  position: relative;
-  z-index: 1;
-}
+
+
 .dots {
   display: flex;
   justify-content: center;
@@ -407,12 +448,14 @@ img.img-fluid {
 .dots span {
   width: 10px;
   height: 10px;
-  background-color: #ccc; /* Set the color of inactive dots */
+  background-color: #ccc;
+  /* Set the color of inactive dots */
   border-radius: 50%;
   margin: 0 5px;
   cursor: pointer;
 }
- .instant span{
+
+.instant span {
   width: 5px;
   height: 5px;
   margin: 0 5px;
@@ -420,7 +463,8 @@ img.img-fluid {
 }
 
 .dots span.active {
-  background-color: #333; /* Set the color of the active dot */
+  background-color: #333;
+  /* Set the color of the active dot */
 }
 
 /* s */
@@ -430,54 +474,54 @@ img.img-fluid {
 
 
 
-.about-section{
-position: relative;
-padding: 120px 0 70px;
+.about-section {
+  position: relative;
+  padding: 120px 0 70px;
 }
 
-.about-section .sec-title{
-margin-bottom: 45px;
+.about-section .sec-title {
+  margin-bottom: 45px;
 }
 
-.about-section .content-column{
-position: relative;
-margin-bottom: 50px;
+.about-section .content-column {
+  position: relative;
+  margin-bottom: 50px;
 }
 
-.about-section .content-column .inner-column{
-position: relative;
-padding-left: 30px;
+.about-section .content-column .inner-column {
+  position: relative;
+  padding-left: 30px;
 }
 
-.about-section .text{
-margin-bottom: 20px;
-font-size: 16px;
-line-height: 26px;
-color: #848484;
-font-weight: 400;
+.about-section .text {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 26px;
+  color: #848484;
+  font-weight: 400;
 }
 
-.about-section .list-style-one{
-margin-bottom: 45px;
+.about-section .list-style-one {
+  margin-bottom: 45px;
 }
 
-.about-section .btn-box{
-position: relative;
+.about-section .btn-box {
+  position: relative;
 }
 
-.about-section .btn-box a{
-padding: 15px 50px;
+.about-section .btn-box a {
+  padding: 15px 50px;
 }
 
-.about-section .image-column{
-position: relative;
+.about-section .image-column {
+  position: relative;
 }
 
 
-.about-section .image-column .inner-column{
-position: relative;
-padding-left: 80px;
-padding-bottom: 0px;
+.about-section .image-column .inner-column {
+  position: relative;
+  padding-left: 80px;
+  padding-bottom: 0px;
 }
 
 .highlight {
@@ -486,7 +530,8 @@ padding-bottom: 0px;
 }
 
 .highlighted-spice {
-  font-weight: bold; /* You can customize the styling for the highlighted spice */
+  font-weight: bold;
+  /* You can customize the styling for the highlighted spice */
 }
 
 
@@ -502,10 +547,57 @@ padding-bottom: 0px;
 /* e */
 /* Mobile responsive  */
 @media (max-width: 768px) {
-  .main-container {
-      background-size: cover;
+  .image-nav .navigation_menu ul{
+    font-size: 10px;
+    width: 100%;
   }
-  .middle .text{
-    font-size:xx-large;
+  .main-container{
+    padding:1rem ;
+  }
+  .top-products{
+    padding:4rem;
+  }
+  .main-container {
+    background-size: cover;
+  }
+  .countries{
+    display: grid;
+  }
+  .countries-list{
+    width: 100%;
+  }
+
+  .middle .text {
+    font-size: xx-large;
+  }
+
+  .centerimg {
+    height: 300px;
+  }
+
+  .product-container {
+    margin-bottom: 20px;
+  }
+
+  .dots {
+    margin-top: 5px;
+    /* Adjust margin for smaller screens */
+  }
+
+  .dots span {
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+    /* Adjust size and margin for smaller screens */
+  }
+}
+
+.text-container {
+  font-size: xx-large;
+  /* Default font size for larger screens */
+
+  @media (max-width: 767px) {
+    font-size: medium;
+    /* Font size for small screens (mobile view) */
   }
 }

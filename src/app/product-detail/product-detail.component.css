@@ -6,7 +6,41 @@
 .product_detailed{
     background-color: black;
 }
-p{
+.product-content .name{
     background: linear-gradient(to right, #ab9b25, transparent);
     padding: 5px;
+    text-align: center;
+    font-size: larger;
+}
+/* .product-img{
+    width: auto;
+} */
+.product-container{
+    display: flex;
+}
+.describe p{
+    font-size: large;
+}
+.describe{
+    text-align: justify;
+    color: rgba(255, 255, 255, 0.536);
+}
+.product-img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+@media (max-width:1020px){
+.product-img img{
+    width: 300px;
+  
+}
+.product-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.describe{
+    padding: 10px;
+    text-align: justify;
+}
 }

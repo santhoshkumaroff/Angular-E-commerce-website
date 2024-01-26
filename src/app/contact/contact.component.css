@@ -28,3 +28,16 @@
 .basic-details  p{
 font-size: 20px;
 }
+.map-details iframe{
+    width:400px;
+}
+
+@media (max-width:720px){
+    .map-details iframe{
+        width:auto;
+        margin-top: 10px;
+    }
+    .container{
+        width: 100%;
+    }
+}

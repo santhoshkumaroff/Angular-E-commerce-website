@@ -11,7 +11,7 @@
           <p>{{ product.name }}</p>
         </div>
         <div class="products">
-          <div class="d-flex">
+          <div class="d-md-flex">
             <h3 class="p-title">Products</h3>
             <!-- (focusout)="clearSearchTerm()" -->
             <div class="searchBox">
@@ -29,11 +29,11 @@
               No products found.
             </div>
           </div>
-          <div>
+          <div class="products-list">
             <div *ngIf="selectedProduct && selectedProduct.selected_products && selectedProduct.selected_products.length > 0">
               <div class="row m-0 p-0">
-                <div *ngFor="let item of selectedProduct.selected_products" class="col-md-3 mb-4" (click)="Productdetail(item,selectedProduct)">
-                  <img [src]="item.imageUrl" alt="{{ item.name }} Image" />
+                <div *ngFor="let item of selectedProduct.selected_products" class="col-md-3 mb-4 list" (click)="Productdetail(item,selectedProduct)">
+                  <img [src]="item.imageUrl" class="img" alt="{{ item.name }} Image" />
                   <p>{{ item.name }}</p>
                 </div>
               </div>

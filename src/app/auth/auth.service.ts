@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GoogleAuthProvider, signInWithPopup,AuthProvider ,getAuth, Auth } from '@angular/fire/auth';
+import { GoogleAuthProvider, signInWithPopup,AuthProvider ,getAuth, Auth, signInWithRedirect } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router';
 import firebase from '@firebase/app-compat';
@@ -8,6 +8,7 @@ import firebase from '@firebase/app-compat';
   providedIn: 'root'
 })
 export class AuthService {
+  res: Promise<void> | undefined;
   // user$: Observable<User |null>;
 
   constructor(private auth: AngularFireAuth, private router: Router) {
@@ -90,24 +91,37 @@ export class AuthService {
   //   return popup;
   // }
 
-  googleSignIn() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    return this.auth.signInWithPopup(provider)
-      .then((res) => {
-        localStorage.setItem('token', JSON.stringify(res.user?.uid));
-        this.router.navigate(['/home']);
-      })
-      .catch((err) => {
-        console.log("G with signin");
+ async googleSignIn() {
+  this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+  // const provider = new firebase.auth.GoogleAuthProvider();
+  //   return this.auth.signInWithPopup(provider)
+  //     .then((res) => {
+  //       localStorage.setItem('token', JSON.stringify(res.user?.uid));
+  //       this.router.navigate(['/home']);
+  //     });
+
+
+
+    // var userCred = await this.auth.getRedirectResult();
+    // console.log(userCred);
+    
+    // var userCred = await firebase.auth().signInWithPopup(
+    //   new firebase.auth.GoogleAuthProvider());
+    // const provider = new firebase.auth.GoogleAuthProvider();
+    // return this.auth.signInWithPopup(provider)
+    //   .then((res) => {
+    //     localStorage.setItem('token', JSON.stringify(res.user?.uid));
+        // this.router.navigate(['/home']);
+    //   })
+    //   .catch((err) => {
+    //     console.log("G with signin");
         
-        if (err.code === 'auth/popup-closed-by-user') {
-          // User closed the popup, handle it gracefully (e.g., show a message)
-          console.log('Authentication popup closed by the user');
-        } else {
-          // Handle other authentication errors
-          console.error("Authentication ",err);
-        }
-      });
+    //     if (err.code === 'auth/popup-closed-by-user') {
+    //       console.log('Authentication popup closed by the user');
+    //     } else {
+    //       console.error("Authentication ",err);
+    //     }
+    //   });
   }
   forgotPassword(email: string) {
     this.auth.sendPasswordResetEmail(email).then(() => {

@@ -4,34 +4,36 @@
       <img src="../../assets/logo.jpg" alt="no image">
     </div>
     <div class="navigation_menu">
-      <ul>
-        <li>
-          <a routerLink="" class="home">
-            Home
-          </a>
-        </li>
-        <li>
-          <a routerLink="/products" class="products">
-            Products
-          </a>
-        </li>
-        <li>
-          <a routerLink="/about" class="about_us">
-            About us
-          </a>
-        </li>
-        <li>
-          <a routerLink="/contact" class="contact_us">
-            Contact us
-          </a>
-        </li>
-        <li *ngIf="!isLoggedIn">
-          <a routerLink="/login" class="Login">Login</a>
-        </li>
-        <li *ngIf="isLoggedIn">
-          <a routerLink="/account" class="Account">Account</a>
-        </li>
-      </ul>
+      <div class="">
+        <ul>
+          <li>
+            <a routerLink="" class="home">
+              Home
+            </a>
+          </li>
+          <li>
+            <a routerLink="/products" class="products">
+              Products
+            </a>
+          </li>
+          <li>
+            <a routerLink="/about" class="about_us">
+              About us
+            </a>
+          </li>
+          <li>
+            <a routerLink="/contact" class="contact_us">
+              Contact us
+            </a>
+          </li>
+          <li *ngIf="!isLoggedIn">
+            <a routerLink="/login" class="Login">Login</a>
+          </li>
+          <li *ngIf="isLoggedIn">
+            <a routerLink="/account" class="Account">Account</a>
+          </li>
+        </ul>
+      </div>
 
 
     </div>
@@ -53,7 +55,6 @@
     </div>
   </div>
 </div>
-
 
 
 <!-- <div class="global-service container-fluid mt-5">
@@ -79,33 +80,28 @@
     </div>
   </div>
 </div> -->
-<div class="best-seller container-fluid p-0 mt-5 p-3 d-flex justify-content-space-between">
-  <div class="d-flex container-fluid align-items-center  ">
-    <div class="text ">Best Seller
-      <br>
-      <div style="font-size: x-large;">
-        Ignite Your Culinary Creativity with Devis Masala! Elevate every dish with our top-selling <span
-          class="highlight">{{ dynamicContent }}</span>.
-        Unleash the magic of our spice powders with easy recipes on our website. Transform ordinary meals into
-        extraordinary experiences—shop now for the finest flavors!
+<div class="best-seller container-fluid p-3 mt-5 d-flex flex-column flex-lg-row">
+  <div class="d-flex flex-column flex-lg-row align-items-center">
+    <div class="text">
+      <h1 class="mb-3">Best Seller</h1>
+      <div class="text-container">
+        Ignite Your Culinary Creativity with Devis Masala! Elevate every dish with our top-selling
+        <span class="highlight">{{ dynamicContent }}</span>. Unleash the magic of our spice powders with easy recipes on our website. Transform ordinary meals into extraordinary experiences—shop now for the finest flavors!
       </div>
     </div>
-
-
   </div>
-  <div class="slider-dots">
-    <div class="slider mt-5 " *ngIf="firstImagePath.length > 0 ">
+  <div class="slider-dots mt-3 mt-lg-5">
+    <div class="slider" *ngIf="firstImagePath.length > 0">
       <img [@fadeInOut]="currentImageIndex" [src]="firstImagePath[currentImageIndex]" alt="best-seller"
-        class="slider-image">
+        class="slider-image img-fluid">
     </div>
-    <div class="dots">
+    <div class="dots d-flex justify-content-center mt-2 mt-lg-0">
       <span *ngFor="let image of firstImagePath; let i = index" (click)="setCurrentImage(i)"
         [class.active]="i === currentImageIndex"></span>
     </div>
   </div>
-
-
 </div>
+
 <!-- <br>
       <br>
       <button class="back" (click)="changeImage(-1)">Back</button>
@@ -164,7 +160,9 @@
                   <div class="dots instant mt-5">
                     <span *ngFor="let product of visibleProducts; let i = index" [class.active]="i === currentIndex" (click)="setIndex(i)"></span>
                   </div>
-                  
+                  <div class="mt-3">
+                    <button routerLink="/products" type="button" class="btn btn-secondary">View all</button>
+                  </div>
                 </div>
               </div>
               <!-- <div class="text-center mt-3">
@@ -180,31 +178,31 @@
 <div class="global-service mt-5 container-fluid mb-5">
   <h2>Our Global Services</h2>
   <div class="row gap-5 container-fluid mt-3 justify-content-center countries">
-    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list">
+    <div class="card col-12 col-md-6   align-items-center justify-content-center countries-list">
       <img src="../../assets/malaysia.png" class="card-img" alt="...">
       <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
         <span class="card-title display-8">Malaysia</span>
       </div>
     </div>
-    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+    <div class="card col-12 col-md-6   align-items-center justify-content-center countries-list ">
       <img src="../../assets/dubai.png" class="card-img" alt="...">
       <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
         <span class="card-title display-8">Dubai</span>
       </div>
     </div>
-    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+    <div class="card col-12 col-md-6   align-items-center justify-content-center countries-list ">
       <img src="../../assets/australia.svg" class="card-img" alt="...">
       <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
         <span class="card-title display-8">Australia</span>
       </div>
     </div>
-    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+    <div class="card col-12 col-md-6   align-items-center justify-content-center countries-list ">
       <img src="../../assets/singapore.png" class="card-img" alt="...">
       <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
         <span class="card-title display-8">Singapore</span>
       </div>
     </div>
-    <div class="card col-12 col-md-2   align-items-center justify-content-center countries-list ">
+    <div class="card col-12 col-md-6   align-items-center justify-content-center countries-list ">
       <img src="../../assets/sri lanka.svg" class="card-img" alt="...">
       <div class="card-body card-img-overlay d-flex flex-column justify-content-center align-items-center">
         <span class="card-title display-8">Sri Lanka</span>

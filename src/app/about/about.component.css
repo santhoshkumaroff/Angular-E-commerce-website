@@ -3,8 +3,23 @@
 }
 .left-content{
     width: 80%;
-    margin-left: 5rem;
+}
+.right-content{
+    display: flex;
+    justify-content: center;
 }
 .right-content img{
     border-radius: 10%;
+}
+.content{
+    display: flex;
+    justify-content: center;
+}
+@media (max-width:720px){
+.left-content{
+    width: 100%;
+}
+.right-content{
+    display: none;
+}
 }

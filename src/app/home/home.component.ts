@@ -20,7 +20,11 @@ import{ AuthService} from '../auth/auth.service'
   ]
 })
 export class HomeComponent implements OnInit {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService) {
+    this.updateProductsPerSlide();
+    window.addEventListener('resize', this.updateProductsPerSlide);
+
+  }
 
 isCollapsed = true;
 
@@ -97,6 +101,15 @@ productsPerSlide: number = 4;
 get centeredIndex(): number {
   return Math.floor(this.productsPerSlide / 2);
 }
+private updateProductsPerSlide = () => {
+  const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+  if (screenWidth <= 768) {
+    this.productsPerSlide = 0;
+  } else {
+    this.productsPerSlide = 4;
+  }
+};
 
 get visibleProducts(): any[] {
   const startIndex = (this.currentIndex - this.centeredIndex + this.top_products.length) % this.top_products.length;
