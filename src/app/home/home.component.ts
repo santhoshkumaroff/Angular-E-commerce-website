@@ -1,4 +1,4 @@
-import { Component,OnInit,OnChanges } from '@angular/core';
+import { Component,OnInit,OnChanges, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import{ AuthService} from '../auth/auth.service'
 
@@ -20,14 +20,32 @@ import{ AuthService} from '../auth/auth.service'
   ]
 })
 export class HomeComponent implements OnInit {
+
+  mobileview: boolean = false;
   constructor(private auth: AuthService) {
     this.updateProductsPerSlide();
     window.addEventListener('resize', this.updateProductsPerSlide);
 
   }
+  isMobile: boolean = false;
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.checkScreenWidth();
+  }
+
+  checkScreenWidth(): void {
+    this.isMobile = window.innerWidth <= 720;
+  }
 isCollapsed = true;
+mobmenu :boolean = false;
+isBarsIconVisible: boolean = true;
 
+  toggleIcon() {
+    this.isBarsIconVisible = !this.isBarsIconVisible;
+    this.mobmenu = false;
+
+  }
 firstImagePath: string [] = [
 'assets/turmericpowder.png',
 'assets/redchillypowder.png',
@@ -103,7 +121,6 @@ get centeredIndex(): number {
 }
 private updateProductsPerSlide = () => {
   const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-
   if (screenWidth <= 768) {
     this.productsPerSlide = 0;
   } else {
@@ -162,8 +179,21 @@ ngOnInit() {
   }, 5000);
   this.changeImage;
   this.startImageChangeTimer();
-}
+  this.checkScreenWidth();
 
+}
+displaycontent :boolean = true;
+showmobmenu(){
+  console.log("abc");
+  if(this.isBarsIconVisible){
+    this.mobmenu = false;
+    this.displaycontent = true;
+  }
+  else{
+  this.mobmenu = true;
+  this.displaycontent = false;
+  }
+}
 startImageChangeTimer() {
   setInterval(() => {
     this.changeImage(1); // Change image forward
