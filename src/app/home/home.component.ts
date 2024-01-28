@@ -1,6 +1,6 @@
-import { Component,OnInit,OnChanges, HostListener } from '@angular/core';
+import { Component, OnInit, OnChanges, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import{ AuthService} from '../auth/auth.service'
+import { AuthService } from '../auth/auth.service'
 
 @Component({
   selector: 'app-home',
@@ -21,14 +21,46 @@ import{ AuthService} from '../auth/auth.service'
 })
 export class HomeComponent implements OnInit {
 
+  Object = Object;
+  isMobile: boolean = false;
+  isCollapsed = true;
+  mobmenu: boolean = false;
+  isBarsIconVisible: boolean = true;
   mobileview: boolean = false;
+  currentImageIndex = 0;
+  selectedProduct: any;
+  currentIndex: number = 0;
+  displaycontent: boolean = true;
+
+   highlightedContent: string[] = [
+    'Turmeric powder', 'Red chilly powder', 'Coriander powder', 'Sambar powder', 'Chicken65 Masala', 'Mutton masala'
+  ];
+  firstImagePath: string[] = [
+    'assets/turmericpowder.png',
+    'assets/redchillypowder.png',
+    'assets/corianderpowder.png',
+    'assets/sambarpowder.png',
+    'assets/chicken65powder.png',
+    'assets/muttonmasala.png'
+
+  ];
+
   constructor(private auth: AuthService) {
     this.updateProductsPerSlide();
     window.addEventListener('resize', this.updateProductsPerSlide);
 
   }
-  isMobile: boolean = false;
+  ngOnInit() {
+    setInterval(() => {
+      this.showNext();
+    }, 5000);
+    this.changeImage;
+    this.startImageChangeTimer();
+    this.checkScreenWidth();
 
+  }
+
+  // mobile screen conditions
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
     this.checkScreenWidth();
@@ -36,133 +68,108 @@ export class HomeComponent implements OnInit {
 
   checkScreenWidth(): void {
     this.isMobile = window.innerWidth <= 720;
-  }
-isCollapsed = true;
-mobmenu :boolean = false;
-isBarsIconVisible: boolean = true;
-
+  } 
+  // ..
   toggleIcon() {
     this.isBarsIconVisible = !this.isBarsIconVisible;
     this.mobmenu = false;
-
   }
-firstImagePath: string [] = [
-'assets/turmericpowder.png',
-'assets/redchillypowder.png',
-'assets/corianderpowder.png',
-'assets/sambarpowder.png',
-'assets/chicken65powder.png',
-'assets/muttonmasala.png'
-
-];
-
-currentImageIndex = 0;
-
-Object = Object;
-top10Products =  {
-  '01':
-  { 
-  name: 'Direct Powders', 
-  imageUrl: 'assets/directpowders.png' ,
-  selected_products : [
+  top10Products = {
+    '01':
     {
-      name : 'Turmeric Powder',imageUrl: 'assets/directpowders.png' 
-    }, 
-    {
-      name : 'Red Chilly Powder',imageUrl: 'assets/directpowders.png' 
+      name: 'Direct Powders',
+      imageUrl: 'assets/directpowders.png',
+      selected_products: [
+        {
+          name: 'Turmeric Powder', imageUrl: 'assets/directpowders.png'
+        },
+        {
+          name: 'Red Chilly Powder', imageUrl: 'assets/directpowders.png'
+        },
+        {
+          name: 'Coriander Powder', imageUrl: 'assets/directpowders.png'
+        },
+        {
+          name: 'Black Pepper Powder', imageUrl: 'assets/directpowders.png'
+        },
+        {
+          name: 'Cummin Powder', imageUrl: 'assets/directpowders.png'
+        },
+        {
+          name: 'Fennel Powder', imageUrl: 'assets/directpowders.png'
+        }
+
+      ]
     },
+    '02':
     {
-      name : 'Coriander Powder',imageUrl: 'assets/directpowders.png' 
+      name: 'Blended Powders',
+      imageUrl: 'assets/directpowders.png',
+      selected_products: [
+        {
+          name: 'Chicken 65 Powder', imageUrl: 'assets/directpowders.png'
+        }
+      ]
     },
-    {
-      name : 'Black Pepper Powder',imageUrl: 'assets/directpowders.png' 
-    },
-    {
-      name : 'Cummin Powder',imageUrl: 'assets/directpowders.png' 
-    },
-    {
-      name : 'Fennel Powder',imageUrl: 'assets/directpowders.png' 
-    }
+    '03':
+      { name: 'Instant Rice Podi', imageUrl: 'assets/directpowders.png' },
+    '04':
+      { name: 'Podis & Appalam', imageUrl: 'assets/directpowders.png' }
+  };
+  topproducts = Object.values(this.top10Products).map((data: any) => data.selected_products).filter(selectedProducts => selectedProducts !== undefined);
+  top_products = this.topproducts.flat();
 
-  ]
- },
- '02':
- { 
-  name: 'Blended Powders', 
-  imageUrl: 'assets/directpowders.png',
-  selected_products : [
-    {
-      name : 'Chicken 65 Powder',imageUrl: 'assets/directpowders.png' 
-    }
-  ]
-  },
-  '03':
-  { name: 'Instant Rice Podi', imageUrl: 'assets/directpowders.png' },
-  '04':
-  { name: 'Podis & Appalam', imageUrl: 'assets/directpowders.png' }
-};
-selectedProduct: any;
-topproducts = Object.values(this.top10Products).map((data: any) => data.selected_products).filter(selectedProducts => selectedProducts !== undefined);
-top_products = this.topproducts.flat();
-currentIndex: number = 0;
-
-get chunkedProducts() {
-  return this.chunkArray(this.top_products, 5);
-}
-
-chunkArray(array: any[], size: number): any[] {
-  return Array.from({ length: Math.ceil(array.length / size) }, (v, i) =>
-    array.slice(i * size, i * size + size)
-  );
-}
-productsPerSlide: number = 4;
-get centeredIndex(): number {
-  return Math.floor(this.productsPerSlide / 2);
-}
-private updateProductsPerSlide = () => {
-  const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  if (screenWidth <= 768) {
-    this.productsPerSlide = 0;
-  } else {
-    this.productsPerSlide = 4;
+  get chunkedProducts() {
+    return this.chunkArray(this.top_products, 5);
   }
-};
 
-get visibleProducts(): any[] {
-  const startIndex = (this.currentIndex - this.centeredIndex + this.top_products.length) % this.top_products.length;
-  const endIndex = (startIndex + this.productsPerSlide) % this.top_products.length;
+  chunkArray(array: any[], size: number): any[] {
+    return Array.from({ length: Math.ceil(array.length / size) }, (v, i) =>
+      array.slice(i * size, i * size + size)
+    );
+  }
+  productsPerSlide: number = 4;
+  get centeredIndex(): number {
+    return Math.floor(this.productsPerSlide / 2);
+  }
+  private updateProductsPerSlide = () => {
+    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (screenWidth <= 768) {
+      this.productsPerSlide = 0;
+    } else {
+      this.productsPerSlide = 4;
+    }
+  };
 
-  // Handle cases where endIndex is before startIndex
-  return endIndex >= startIndex
-    ? this.top_products.slice(startIndex, endIndex + 1)
-    : [...this.top_products.slice(startIndex), ...this.top_products.slice(0, endIndex + 1)];
-}
+  get visibleProducts(): any[] {
+    const startIndex = (this.currentIndex - this.centeredIndex + this.top_products.length) % this.top_products.length;
+    const endIndex = (startIndex + this.productsPerSlide) % this.top_products.length;
 
-showNext() {
-  this.currentIndex = (this.currentIndex + 1) % this.top_products.length;
-}
+    // Handle cases where endIndex is before startIndex
+    return endIndex >= startIndex
+      ? this.top_products.slice(startIndex, endIndex + 1)
+      : [...this.top_products.slice(startIndex), ...this.top_products.slice(0, endIndex + 1)];
+  }
 
-showPrevious() {
-  this.currentIndex = (this.currentIndex - 1 + this.top_products.length) % this.top_products.length;
-}
+  showNext() {
+    this.currentIndex = (this.currentIndex + 1) % this.top_products.length;
+  }
+
+  showPrevious() {
+    this.currentIndex = (this.currentIndex - 1 + this.top_products.length) % this.top_products.length;
+  }
 
 
 
-setIndex(index: number) {
-  this.currentIndex = index;
-}
-viewAllProducts() {
-  // Implement logic to navigate to all products page or trigger an action
-}
-  // Updated content for highlighted spice
-  highlightedContent: string[] = [
-   'Turmeric powder','Red chilly powder','Coriander powder','Sambar powder','Chicken65 Masala','Mutton masala'
-       // Add similar strings for other items
-  ];
-  
+  setIndex(index: number) {
+    this.currentIndex = index;
+  }
+  viewAllProducts() {
+    // Implement logic to navigate to all products page or trigger an action
+  }
+    // Updated content for highlighted spice
   dynamicContent: string = this.highlightedContent[this.currentImageIndex];
 
-  // ...
   changeImage(step: number) {
     this.currentImageIndex = (this.currentImageIndex + step + this.firstImagePath.length) % this.firstImagePath.length;
     // Optionally, you can update the content dynamically based on the currentImageIndex
@@ -173,42 +180,29 @@ viewAllProducts() {
     this.dynamicContent = this.highlightedContent[this.currentImageIndex];
   }
 
-ngOnInit() {
-  setInterval(() => {
-    this.showNext();
-  }, 5000);
-  this.changeImage;
-  this.startImageChangeTimer();
-  this.checkScreenWidth();
 
-}
-displaycontent :boolean = true;
-showmobmenu(){
-  console.log("abc");
-  if(this.isBarsIconVisible){
-    this.mobmenu = false;
-    this.displaycontent = true;
+  showmobmenu() {
+    console.log("abc");
+    if (this.isBarsIconVisible) {
+      this.mobmenu = false;
+      this.displaycontent = true;
+    }
+    else {
+      this.mobmenu = true;
+      this.displaycontent = false;
+    }
   }
-  else{
-  this.mobmenu = true;
-  this.displaycontent = false;
+  startImageChangeTimer() {
+    setInterval(() => {
+      this.changeImage(1); // Change image forward
+    }, 5000); // 5000 milliseconds (5 seconds)
   }
-}
-startImageChangeTimer() {
-  setInterval(() => {
-    this.changeImage(1); // Change image forward
-  }, 5000); // 5000 milliseconds (5 seconds)
-}
 
-// changeImage(step: number) {
-//   this.currentImageIndex = (this.currentImageIndex + step + this.firstImagePath.length) % this.firstImagePath.length;
-// }
+  setCurrentImage(index: number) {
+    this.currentImageIndex = index;
+  }
 
-setCurrentImage(index: number) {
-  this.currentImageIndex = index;
-}
-
-get isLoggedIn(): boolean {
-  return this.auth.isLoggedIn;
-}
+  get isLoggedIn(): boolean {
+    return this.auth.isLoggedIn;
+  }
 }
