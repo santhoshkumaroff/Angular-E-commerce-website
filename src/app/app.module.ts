@@ -9,7 +9,7 @@ import { MasalaListComponent } from './masala-list/masala-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideAuth,getAuth, GoogleAuthProvider } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FooterComponent } from './footer/footer.component';
@@ -22,6 +22,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { AuthService } from './auth/auth.service';
 import { AngularFireModule } from '@angular/fire/compat';
+import{ AngularFireAuthModule} from '@angular/fire/compat/auth'
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AccountComponent } from './account/account.component';
 import { SidebarModule } from 'primeng/sidebar';
@@ -52,6 +53,12 @@ import { ButtonModule } from 'primeng/button';
     BrowserAnimationsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    provideAuth(() => getAuth(initializeApp(environment.firebase)), {
+      provider: GoogleAuthProvider,
+      method: 'redirect'
+    }),
+    provideFirestore(() => getFirestore(initializeApp(environment.firebase))),
     provideAuth(() => getAuth(initializeApp(environment.firebase))),
     provideDatabase(() => getDatabase(initializeApp(environment.firebase))),
     provideFirestore(() => getFirestore(initializeApp(environment.firebase)))
