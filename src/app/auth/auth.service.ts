@@ -9,9 +9,11 @@ import firebase from '@firebase/app-compat';
 })
 export class AuthService {
   res: Promise<void> | undefined;
+  user$: any;
   // user$: Observable<User |null>;
 
   constructor(private auth: AngularFireAuth, private router: Router) {
+    this.user$ = auth.authState;    
     this.lastActivityTime = Date.now();
     this.initializeAutoLogout();
     console.log('AuthService constructor called');
@@ -40,8 +42,8 @@ export class AuthService {
   }
 
   // login 
-  login(email: string, password: string) {
-    this.auth.signInWithEmailAndPassword(email, password).then(() => {
+  async login(email: string, password: string) {
+  await  this.auth.signInWithEmailAndPassword(email, password).then(() => {
       localStorage.setItem('token', 'true');
       this.resetActivityTime();
       this.router.navigate(['/home'])
@@ -71,7 +73,7 @@ export class AuthService {
   logout() {
     this.auth.signOut().then(() => {
       localStorage.removeItem('token');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     }, err => {
       console.log("logout");
       
@@ -92,13 +94,13 @@ export class AuthService {
   // }
 
  async googleSignIn() {
-  this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-  // const provider = new firebase.auth.GoogleAuthProvider();
-  //   return this.auth.signInWithPopup(provider)
-  //     .then((res) => {
-  //       localStorage.setItem('token', JSON.stringify(res.user?.uid));
-  //       this.router.navigate(['/home']);
-  //     });
+  // this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+  const provider = new firebase.auth.GoogleAuthProvider();
+    return this.auth.signInWithPopup(provider)
+      .then((res) => {
+        localStorage.setItem('token', JSON.stringify(res.user?.uid));
+        this.router.navigate(['/']);
+  });
 
 
 

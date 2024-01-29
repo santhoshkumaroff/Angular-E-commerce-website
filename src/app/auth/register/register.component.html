@@ -18,8 +18,8 @@
                                 <input type="{{inputType}}" class="form-control bg-transparent" name="password"
                                     [(ngModel)]="password" (input)="checkPasswordStrength()">
                                 <div class="input-group-append">
-                                    <span class="input-group-text text-dark">
-                                        <i class="far"
+                                    <span class="input-group-text text-dark bg-transparent">
+                                        <i class="far text-dark"
                                             [ngClass]="{'fa-eye': inputType === 'text', 'fa-eye-slash': inputType === 'password'}"
                                             (click)="togglePasswordVisibility()"></i>
                                     </span>
@@ -34,8 +34,8 @@
                                 <input type="{{inputType}}" class="form-control bg-transparent" name="confirmPassword"
                                     [(ngModel)]="confirmPassword" (input)="checkPasswordMatch()">
                                 <div class="input-group-append">
-                                    <span class="input-group-text text-dark">
-                                        <i class="far"
+                                    <span class="input-group-text bg-transparent">
+                                        <i class="far text-dark"
                                             [ngClass]="{'fa-eye': inputType === 'text', 'fa-eye-slash': inputType === 'password'}"
                                             (click)="togglePasswordVisibility()"></i>
                                     </span>

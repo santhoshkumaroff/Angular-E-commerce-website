@@ -16,8 +16,8 @@
                           <div class="input-group">
                             <input type="{{ inputType }}" class="form-control bg-transparent" name="password" [(ngModel)]="password">
                             <div class="input-group-append">
-                              <span class="input-group-text text-dark">
-                                <i class="far" [ngClass]="{'fa-eye': inputType === 'text', 'fa-eye-slash': inputType === 'password'}" (click)="togglePasswordVisibility()"></i>
+                              <span class="input-group-text bg-transparent">
+                                <i class="far text-dark" [ngClass]="{'fa-eye': inputType === 'text', 'fa-eye-slash': inputType === 'password'}" (click)="togglePasswordVisibility()"></i>
                               </span>
                             </div>
                           </div>

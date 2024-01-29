@@ -38,16 +38,12 @@
       </div>
 
     </div>
-    <div class="image-nav position-relative z-3" *ngIf="isMobile">
+    <div class="image-nav position-relative" *ngIf="isMobile">
       <div class="site-logo">
         <img src="../../assets/logo.jpg" alt="no image">
       </div>
-      <div (click)="showmobmenu()">
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-outline-primary" (click)="toggleIcon()">
-            <i class="fa" [ngClass]="{'fa-bars': isBarsIconVisible, 'fa-times': !isBarsIconVisible}"></i>
-          </button>
-        </div>
+      <div (click)="showmobmenu()" class="p-3">
+        <i class="pi pi-bars" (click)="sidebar = true"></i>
       </div>
     </div>
     <div class="middle">
@@ -60,7 +56,7 @@
 
         </div>
         <div class="button" routerLink="/products">
-          <button class="explore" routerLink="../masala">Our products<span class="icon-right"></span>
+          <button class="explore" routerLink="/masala">Our products<span class="icon-right"></span>
             <span class="icon-right after"></span></button>
         </div>
       </div>
@@ -224,7 +220,7 @@
       </div>
     </div>
   </div>
-  <div class="position-fixed overflow-hidden  top-0 z-2 w-100 bg-black" *ngIf="mobmenu">
+  <p-sidebar [(visible)]="sidebar" position="left" class="z-2" [fullScreen]="true">
     <div class="">
       <ul class=" mobmenu d-flex flex-column justify-content-evenly">
         <li>
@@ -255,7 +251,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </p-sidebar>
   <div class="" *ngIf="displaycontent">
     <app-footer></app-footer>
   </div>

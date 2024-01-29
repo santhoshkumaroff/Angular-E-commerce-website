@@ -24,6 +24,8 @@ import { AuthService } from './auth/auth.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AccountComponent } from './account/account.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -43,8 +45,10 @@ import { AccountComponent } from './account/account.component';
     ],
   imports: [
     BrowserModule,
+    SidebarModule,
     AppRoutingModule,
     CountUpModule,
+    ButtonModule,
     BrowserAnimationsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,6 +1,6 @@
 <div class="top-bottom">
     <div class="main-container">
-        <div class="image-nav">
+        <div class="image-nav" *ngIf="!isMobile">
             <div class="site-logo">
                 <img src="../../assets/logo.jpg" alt="no image">
             </div>
@@ -35,12 +35,45 @@
                 </ul>
             </div>
         </div>
-       
-        </div>
-        <!-- <footer>
-            <div class="content">
-        <h3>jhhsd</h3>
+        <div class="image-nav position-relative" *ngIf="isMobile">
+            <div class="site-logo">
+              <img src="../../assets/logo.jpg" alt="no image">
             </div>
-        </footer> -->
-        
+            <div class="mr-4">
+              <i class="pi pi-bars" (click)="sidebar = true"></i>
+            </div>
+          </div>
+        </div>
+        <p-sidebar [(visible)]="sidebar" position="left" class="z-2" [fullScreen]="true">
+            <div class="">
+              <ul class="mobmenu d-flex flex-column justify-content-evenly">
+                <li>
+                  <a routerLink="" class="home">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/products" class="products">
+                    Products
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/about" class="about_us">
+                    About us
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/contact" class="contact_us">
+                    Contact us
+                  </a>
+                </li>
+                <li *ngIf="!isLoggedIn">
+                  <a routerLink="/login" class="Login">Login</a>
+                </li>
+                <li *ngIf="isLoggedIn">
+                  <a routerLink="/account" class="Account">Account</a>
+                </li>
+              </ul>
+            </div>
+          </p-sidebar>        
 </div>

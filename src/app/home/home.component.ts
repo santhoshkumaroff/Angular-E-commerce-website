@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   selectedProduct: any;
   currentIndex: number = 0;
   displaycontent: boolean = true;
+  sidebar:boolean = false;
 
    highlightedContent: string[] = [
     'Turmeric powder', 'Red chilly powder', 'Coriander powder', 'Sambar powder', 'Chicken65 Masala', 'Mutton masala'

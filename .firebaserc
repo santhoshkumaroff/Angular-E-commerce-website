@@ -9,6 +9,9 @@
       "hosting": {
         "Devis_Masala": [
           "resource"
+        ],
+        "host": [
+          "deploy"
         ]
       }
     },
