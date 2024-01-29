@@ -52,9 +52,9 @@ import { ButtonModule } from 'primeng/button';
     BrowserAnimationsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore())
+    provideAuth(() => getAuth(initializeApp(environment.firebase))),
+    provideDatabase(() => getDatabase(initializeApp(environment.firebase))),
+    provideFirestore(() => getFirestore(initializeApp(environment.firebase)))
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideDatabase(() => getDatabase()),
