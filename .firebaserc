@@ -7,11 +7,11 @@
   "targets": {
     "devismasala-database": {
       "hosting": {
-        "Devis_Masala": [
-          "resource"
-        ],
         "host": [
           "deploy"
+        ],
+        "Devis_masala": [
+          "resource"
         ]
       }
     },

@@ -46,7 +46,7 @@ export class AuthService {
   await  this.auth.signInWithEmailAndPassword(email, password).then(() => {
       localStorage.setItem('token', 'true');
       this.resetActivityTime();
-      this.router.navigate(['/home'])
+      this.router.navigate(['/'])
     }, err => {
       console.log("Login");
       alert("Login");
