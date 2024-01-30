@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   passwordsDoNotMatch: boolean = false;
   passwordTooWeak: boolean = false;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService,private router:Router) { }
   inputType: string = 'password';
 
   togglePasswordVisibility() {
@@ -60,7 +61,13 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.auth.register(this.email, this.password)
+    this.auth.registerdetails(this.email, this.password).then((res) =>{
+      this.router.navigate(['/login']);
+      console.log("Google SignedIn");
+      
+    }).catch((err) =>{
+      alert(err.message)
+    })
     this.email = '';
     this.password = '';
     this.confirmPassword = '';

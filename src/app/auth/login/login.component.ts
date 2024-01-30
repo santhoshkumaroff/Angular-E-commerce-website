@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   email : string = '';
   password : string = '';
 
-  constructor(private auth : AuthService) { 
+  constructor(private auth : AuthService, private router:Router) { 
     console.log('LoginComponent constructor called');
   }
   inputType: string = 'password';
@@ -34,7 +35,13 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.auth.login(this.email,this.password);
+    this.auth.login(this.email,this.password).then((res) =>{
+      this.router.navigate(['/']);
+      console.log("login done");
+      
+    }).catch((err) =>{
+      alert(err.message)
+    });
     
     this.email = '';
     this.password = '';
@@ -42,8 +49,9 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithGoogle() {
-    this.auth.googleSignIn().then(() =>{
-      console.log("Successfully SignedIn");
+    this.auth.googleSignIn().then((res) =>{
+      this.router.navigate(['/']);
+      console.log("Google SignedIn");
       
     }).catch((err) =>{
       alert(err.message)

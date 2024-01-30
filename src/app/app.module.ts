@@ -54,14 +54,7 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    provideAuth(() => getAuth(initializeApp(environment.firebase)), {
-      provider: GoogleAuthProvider,
-      method: 'redirect'
-    }),
-    provideFirestore(() => getFirestore(initializeApp(environment.firebase))),
-    provideAuth(() => getAuth(initializeApp(environment.firebase))),
-    provideDatabase(() => getDatabase(initializeApp(environment.firebase))),
-    provideFirestore(() => getFirestore(initializeApp(environment.firebase)))
+
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideDatabase(() => getDatabase()),

@@ -165,10 +165,48 @@ color: #fef29d;
 display: inline-block;
 margin-left: 20px;
 }
+.countries-list {
+  width: 10%;
+}
+.global-service {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.container-fluid {
+  position: relative;
+  overflow: hidden;
+}
 .footer-menu li:hover a{
 color: #fef29d;
 }
 .footer-menu li a {
 font-size: 14px;
 color: #878787;
+}
+.card-img-overlay {
+  color: white;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Adjust the last value for opacity */
+}
+
+.card-img-overlay:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+@media (max-width: 768px) {
+  .countries{
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .countries-list{
+    width: 100%;
+  }
+  .page-links{
+    margin-top: 2rem;
+  }
 }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { GoogleAuthProvider, signInWithPopup,AuthProvider ,getAuth, Auth, signInWithRedirect } from '@angular/fire/auth';
+import { GoogleAuthProvider, signInWithPopup,AuthProvider ,getAuth, Auth, signInWithRedirect, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router';
 import firebase from '@firebase/app-compat';
+import 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -43,96 +44,70 @@ export class AuthService {
 
   // login 
   async login(email: string, password: string) {
-  await  this.auth.signInWithEmailAndPassword(email, password).then(() => {
-      localStorage.setItem('token', 'true');
+    const auth = getAuth();
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        // Handle the successful sign-in
+        localStorage.setItem('token', JSON.stringify(result.user?.uid));
+        console.log('Signed in with Google:', result.user);
+      })
       this.resetActivityTime();
-      this.router.navigate(['/'])
-    }, err => {
-      console.log("Login");
-      alert("Login");
+    } catch (error) {
+      console.log('Login error:', error);
+      alert('Login failed');
       this.router.navigate(['/login']);
-    })
+    }
   }
-
+  
   // Register
-
-  register(email: string, password: string) {
-    this.auth.createUserWithEmailAndPassword(email, password).then(() => {
-      alert("Registration successfull !!!")
-      this.router.navigate(['/login']);
-    }, err => {
-      console.log("register");
-      
-      alert("Register");
-      this.router.navigate(['/register'])
-    })
+  async registerdetails(email: string, password: string) {
+    const auth = getAuth();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert('Registration successful!');
+    } catch (error) {
+      console.log('Registration error:', error);
+      alert('Registration failed');
+      this.router.navigate(['/register']);
+    }
   }
-
-  // sign out
-
-  logout() {
-    this.auth.signOut().then(() => {
+  
+  // Sign out
+  async logout() {
+    const auth = getAuth();
+    try {
+      await signOut(auth);
       localStorage.removeItem('token');
-      this.router.navigate(['/']);
-    }, err => {
-      console.log("logout");
-      
-      alert("Logout")
-    })
+    } catch (error) {
+      console.log('Logout error:', error);
+      alert('Logout failed');
+    }
   }
 
-  // Google sign in
-  // googleSignIn() {
-  //   const provider = new firebase.auth.GoogleAuthProvider();
-  //   const popup = this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => {
-  //     localStorage.setItem('token', JSON.stringify(res.user?.uid));
-  //     this.router.navigate(['/home']);
-  //   }, err => {
-  //     console.log("Error Google SignIn"); 
-  //   })
-  //   return popup;
-  // }
-
- async googleSignIn() {
-  // this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-  const provider = new firebase.auth.GoogleAuthProvider();
-    return this.auth.signInWithPopup(provider)
-      .then((res) => {
-        localStorage.setItem('token', JSON.stringify(res.user?.uid));
-        this.router.navigate(['/']);
+async  googleSignIn() {
+  const auth = getAuth();
+ await signInWithPopup(auth, new GoogleAuthProvider())
+  .then((result) => {
+    // Handle the successful sign-in
+    localStorage.setItem('token', JSON.stringify(result.user?.uid));
+    console.log('Signed in with Google:', result.user);
+  })
+  .catch((error) => {
+    // Handle errors
+    console.error('Google sign-in error:', error);
   });
-
-
-
-    // var userCred = await this.auth.getRedirectResult();
-    // console.log(userCred);
-    
-    // var userCred = await firebase.auth().signInWithPopup(
-    //   new firebase.auth.GoogleAuthProvider());
-    // const provider = new firebase.auth.GoogleAuthProvider();
-    // return this.auth.signInWithPopup(provider)
-    //   .then((res) => {
-    //     localStorage.setItem('token', JSON.stringify(res.user?.uid));
-        // this.router.navigate(['/home']);
-    //   })
-    //   .catch((err) => {
-    //     console.log("G with signin");
-        
-    //     if (err.code === 'auth/popup-closed-by-user') {
-    //       console.log('Authentication popup closed by the user');
-    //     } else {
-    //       console.error("Authentication ",err);
-    //     }
-    //   });
   }
-  forgotPassword(email: string) {
-    this.auth.sendPasswordResetEmail(email).then(() => {
-      this.router.navigate(['/verify-email']);
-    }, err => {
-      console.log("Forget pass");
-      
-      alert('Something went wrong');
-    })
+ async forgotPassword(email: string) {
+    const auth = getAuth();
+  await sendPasswordResetEmail(auth, email)
+      .then((res) => {
+        alert('reset successfull')
+      })
+      .catch((err) => {
+        console.log('Password reset error:', err);
+        alert('Something went wrong');
+      });
   }
 
   get isLoggedIn(): boolean {
